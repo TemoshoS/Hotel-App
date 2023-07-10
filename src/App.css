@@ -1,38 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: auto;
+  flex-direction: column;
+}
+body{
+  background-color: snow;
+
+}
+
+
+
+
+.heading{
+  margin-bottom: 50px;
+}
+
+.login-card {
+
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+  border-radius: 6px;
+  padding:70px 100px;
+
+}
+.input-container input {
+  border: 0;
+  border-bottom: 1px solid black;
+  background: transparent;
+  width: 100%;
+  padding: 8px 5px;
+  font-size: 16px;
+  color: black;
+}
+
+.input-container input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
+}
+
+
+.navbar-links-container a {
+  margin-right: 3rem;
+  text-decoration: none;
   color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-link:hover {
+	text-decoration:none;
+	border-bottom: 3px solid white;
   }
-  to {
-    transform: rotate(360deg);
+
+
+  .image-container {
+    position: relative;
   }
-}
+  
+  .nav-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  
+  .hotel-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .text-container{
+
+    position: absolute;
+    top: 40%;
+    right: 50%;
+    color: white;
+    
+  }
+
+  .facilities{
+
+    text-align: center;
+    font-family: serif;
+    font-size: 70px;
+    color: rgb(12, 12, 82);
+
+    
+  }
+  

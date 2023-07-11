@@ -2,6 +2,7 @@ import './App.css';
 import Signin from './Components/signin';
 import Singup from './Components/signup';
 import Home from './Components/home'
+import Room from './Components/rooms';
 
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -14,6 +15,7 @@ function App() {
         <Route  path='/' element={<Signin/>}/>
         <Route path='/register' element={<Singup/>}/>
         <Route  path='/home' element={<Home/>}/>
+        <Route path='/room' element={<Room/>}/>
       </Routes>
       
       

@@ -1,5 +1,12 @@
 import React from 'react';
-import hotelp from '../images/hotel.jpg';
+import Header from './header';
+import hotel from '../images/hotel.jpg';
+import gym from '../images/gym.jpg'
+import poolside from '../images/poolside.jpg'
+import spa from '../images/spa.jpg'
+import swimming from '../images/swimmingpool.jpg'
+import resturant from '../images/resturant.jpg'
+import laundry from '../images/laundry.jpg'
 
 const Home = () => {
     return (
@@ -8,36 +15,134 @@ const Home = () => {
                 <tr>
                     <td>
                         <div className='image-container'>
-                            <img src={hotelp} className='hotel-image' alt='Hotel' />
-                            <div className='nav-container'>
-                                <nav >
-                                    <div className='navbar-links-container'>
-                                        <a href='' className='nav-link' style={{fontSize:'25px'}}>Facilities</a>
-                                        <a href='' className='nav-link' style={{fontSize:'25px'}}>Rooms</a>
-                                    </div>
-                                </nav>
-                            </div>
-
-                            <div className='text-container'>
-                                <p style={{fontSize:'70px'}}>WELCOM TO</p>
-                                <h1 style={{fontSize:'120px',fontFamily:'serif'}}>LUXURY </h1>
-                                <h4 style={{fontSize:'50px',fontFamily:'serif',wordSpacing:'40px'}}>H O T E L S</h4>
-                                <b style={{fontSize:'18px'}}><p>Book your stay and enjoy Luxury</p>
-                                <p>redefined at the most affordable rates.</p></b>
-
-                            </div>
+                            <img src={hotel} className='hotel-image' alt='Hotel' />
+                           <Header/>
                         </div>
                     </td>
+                </tr>
+                <tr>
+                    <td style={{ height: '30px' }}></td>
                 </tr>
                 <tr className='App'>
                     <td>
                         <div className='facilities'>
-                        <h1>FACILITIES</h1>
-                        <p style={{color:'rgb(12, 12, 82)'}}>We want your stay at out lush hotel to be truly unforgtable. This is why we give special attention to all of your needs so<br/>
-                        &nbsp; that we can ensure an experiance quite uniquw. Luxury hotels offers the perfect setting with stunning views for leisure<br/>
-                        &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and our modern luxury resort facilities will help you enjoy the best of all. </p>
+                            <h1>FACILITIES</h1>
+                            <tr>
+                                <td style={{ height: '30px' }}></td>
+                            </tr>
+                            <p >We want your stay at out lush hotel to be truly unforgtable. This is why we give special attention to all of your needs so<br />
+                                &nbsp; that we can ensure an experiance quite uniquw. Luxury hotels offers the perfect setting with stunning views for leisure<br />
+                                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and our modern luxury resort facilities will help you enjoy the best of all. </p>
                         </div>
                     </td>
+                </tr>
+                <tr>
+                    <td style={{ height: '30px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={gym} className='gym-image' alt='gym' />
+                            <div className='gym-container'>
+                                <h1>THE GYM</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style={{ height: '100px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={poolside} className='poolside-image' alt='pool' />
+                            <div className='poolside-container'>
+                                <h1>POOLSIDE BAR</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style={{ height: '100px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={spa} className='spa-image' alt='spa' />
+                            <div className='spa-container'>
+                                <h1>THE SPA</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style={{ height: '100px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={swimming} className='swimmingpool-image' alt='spa' />
+                            <div className='swimmingpool-container'>
+                                <h1>SWIMMING POOL</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style={{ height: '100px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={resturant} className='resturant-image' alt='spa' />
+                            <div className='resturant-container'>
+                                <h1>RESTURANT</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style={{ height: '100px' }}></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div className='image-container'>
+                            <img src={laundry} className='resturant-image' alt='spa' />
+                            <div className='resturant-container'>
+                                <h1>LAUNDRY</h1>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
                 </tr>
             </table>
         </div>

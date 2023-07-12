@@ -15,7 +15,7 @@ const Signin = () => {
 
         signInWithEmailAndPassword(auth, email, password).then(() => {
 
-            alert('login successfully');
+           
             naviagte('/home');
 
         }).catch((error) => {

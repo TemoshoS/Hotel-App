@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import authimage from '../images/login.jpg'
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 
 
 
@@ -14,14 +14,16 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate();
 
   const register = () => {
 
     createUserWithEmailAndPassword(auth, email, password).then(() => {
-      alert("Registered successfully")
+      navigate('/')
 
     }).catch((error) => {
-      console.log(error.message)
+      
+      alert('Please enter atleast 7 digits')
 
 
     })

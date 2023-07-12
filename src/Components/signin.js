@@ -9,6 +9,7 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const naviagte = useNavigate();
+    const [showPassword, setShowPassword] = useState(false)
 
     const login = () => {
 
@@ -23,14 +24,19 @@ const Signin = () => {
         })
 
 
-    }
+    };
+
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     return (
         <div className='auth-card'>
 
             <div className='auth'>
-                <h2 className='heading'>Sign in</h2>
-                
+                <p className="heading">Sign In</p>
+
                 <div className='input-container'>
                     <label>email</label>
                     <input type='text' onChange={(event) => setEmail(event.target.value)} />
@@ -38,16 +44,35 @@ const Signin = () => {
 
                 <div className='input-container'>
                     <label>Password</label>
-                    <input type='text' onChange={(event) => setPassword(event.target.value)} />
+                    <div className='password-input-container'>
+                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            type={showPassword ? 'text' : 'password'}
+                        />
+                        <i
+                            className={`password-toggle-icon ${showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
+                            onClick={togglePasswordVisibility}
+                        ></i>
+
+                    </div>
                 </div>
 
-                <button onClick={login}>Login</button>
 
-                <p>Don't have an account ? <Link to='/register' style={{ color: 'green', textDecoration: 'none' }}>Sign up</Link></p>
+                <div className='input-container'>
+                    <label>
+                        <input type="checkbox" className='rememberme' />
+                        Remeber me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to='forgotpassword' style={{ color: 'red', textDecoration: 'none' }}>forgot password</Link>
+
+                    </label>
+                </div>
+
+                <button className='submit-button' onClick={login}>Login</button>
+
+                <p style={{ marginLeft: '80px' }}>Don't have an account ? <Link to='/register' style={{ color: 'red', textDecoration: 'none' }}>Sign up</Link></p>
 
             </div>
 
-            <img src={authimage} className='auth-image'/>
+            <img src={authimage} className='login-image' />
 
         </div>
     )

@@ -5,6 +5,9 @@ import authimage from '../images/login.jpg'
 import { Link } from 'react-router-dom';
 
 
+
+
+
 const Signup = () => {
 
   const [email, setEmail] = useState('');
@@ -33,7 +36,7 @@ const Signup = () => {
     <div className='auth-card'>
       <div className='auth'>
 
-        <h2 className="heading">Sign up</h2>
+        <p className="heading">Sign up</p>
         <p>Register to access your account</p>
 
 
@@ -56,9 +59,10 @@ const Signup = () => {
               type={showPassword ? 'text' : 'password'}
             />
             <i
-              className={`password-toggle-icon ${showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'}`}
+              className={`password-toggle-icon ${showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
               onClick={togglePasswordVisibility}
             ></i>
+
           </div>
         </div>
 

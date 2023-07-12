@@ -22,10 +22,20 @@ body {
   
 width: 50%;
 height: 500px;
-margin-top: -355px;
+margin-top: -438px;
 margin-left: 500px;
 
 }
+
+.login-image {
+
+  
+  width: 50%;
+  height: 500px;
+  margin-top: -358px;
+  margin-left: 500px;
+  
+  }
 
 .auth{
   margin-left: 65px;
@@ -36,21 +46,26 @@ margin-left: 500px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
   height: 500px;
-  width:1000px;
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 200px;
 }
 
 
 .heading {
-  margin-bottom: 50px;
+  margin-top: 100px;
+  font-size: 25px;
 }
+
+
 
 .input-container {
   position: relative;
 }
 
 
-input {
+.input-container input {
   border: 1px solid gray;
   border-radius: 2px;
   position: relative;
@@ -60,7 +75,7 @@ input {
   height: 30px;
 }
 
-label {
+.input-container label {
   font-weight: normal;
   font-size: 10px;
   position: absolute;
@@ -71,6 +86,7 @@ label {
 }
 
 
+
 .password-input-container {
   position: relative;
 }
@@ -78,23 +94,29 @@ label {
 .password-toggle-icon {
   position: absolute;
   top: 50%;
-  right: 10px;
+  left: 280px;
   transform: translateY(-50%);
   cursor: pointer;
 }
 
-/* Additional styles for the eye icon */
 .fa-eye:before {
-  content: '\f06e'; /* FontAwesome eye icon */
+  content: '\f06e'; 
 }
 
 .fa-eye-slash:before {
-  content: '\f070'; /* FontAwesome eye-slash icon */
+  content: '\f070'; 
+}
+
+.input-container .rememberme{
+
+  width:15px;
+  height:10px;
+  
 }
 
 
 .submit-button{
-  margin-top: 20px;
+  margin-top: 30px;
   padding: 6px 30px;
   margin-bottom: 20px;
   background-color: rgb(247, 199, 128);

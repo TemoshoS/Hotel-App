@@ -22,8 +22,8 @@ body {
   
 width: 50%;
 height: 500px;
-margin-top: -408px;
-margin-left: 500px;
+margin-top: -438px;
+margin-left: 480px;
 
 }
 
@@ -32,8 +32,8 @@ margin-left: 500px;
   
   width: 50%;
   height: 500px;
-  margin-top: -335px;
-  margin-left: 500px;
+  margin-top: -358px;
+  margin-left: 480px;
   
   }
 
@@ -132,6 +132,58 @@ color: red;
 text-decoration: none;
 }
 
+
+/* Styles for screens smaller than 768px */
+@media (max-width: 767px) {
+  .auth-image {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .login-image {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .auth-card {
+    width: 90%;
+    margin-top: 50px;
+  }
+
+  .heading {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  .input-container input {
+    width: 80%;
+  }
+
+  .input-container label {
+    font-size: 8px;
+    left: 1em;
+  }
+
+  .password-toggle-icon {
+    left: 75%;
+
+  }
+
+  .submit-button {
+    margin-top: 40px;
+    
+  }
+
+  .login-link {
+    margin-left: 10px;
+  }
+}
+
+/*Auth end*/
 
 
 
@@ -311,6 +363,8 @@ text-decoration: none;
 
 }
 
+/*facilities*/
+
 .item-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
@@ -383,7 +437,7 @@ margin-left: 55px;
 
 .heart i {
   font-size: 70px;
-  color: #c2c2c2;
+  color: #696969;
 }
 
 
@@ -415,5 +469,42 @@ margin-left: 55px;
   .heart {
     margin-left: 40%; 
   }
+}
+
+/*room bookings*/
+.reserve-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  height: 500px;
+  width: 1500px;
+  margin: 0 auto;
+  margin-top: 150px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.reserve-button{
+
+  margin-left: 79%;
+  margin-top: 5%;
+  padding: 20px 80px;
+  background-color: rgb(247, 199, 128);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+.reserve-description{
+
+    margin-left: 35.5%;
+    margin-top:6%;
+  
+}
+
+.inline {
+  display: inline;
 }
 

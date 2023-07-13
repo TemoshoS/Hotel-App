@@ -42,10 +42,11 @@ const Room = () => {
                         <div className='item-card'>
                             <img src={view} className='room-view' alt='roomview' />
                             <div>
-                            <h2 className='room-name'>The People's Brownstone</h2> 
-                            <div className='heart'>
-  <FontAwesomeIcon icon={faHeart} style={{ color: "#b6b7b9" }} />
-</div>
+                                <h2 className='room-name'>The People's Brownstone</h2>
+
+                                <div className='heart'>
+                                   <i><FontAwesomeIcon icon={faHeart} /></i>
+                                </div>
 
                             </div>
                             <p className='description'>Wifi * Air conditining * Kitchen-heating * smokers <br /> Parkng * Balcony * Animal friendly</p>

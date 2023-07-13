@@ -8,6 +8,8 @@ import swimming from '../images/swimmingpool.jpg'
 import resturant from '../images/resturant.jpg'
 import laundry from '../images/laundry.jpg'
 
+
+
 const Home = () => {
     return (
         <div>

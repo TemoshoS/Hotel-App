@@ -22,7 +22,7 @@ body {
   
 width: 50%;
 height: 500px;
-margin-top: -438px;
+margin-top: -408px;
 margin-left: 500px;
 
 }
@@ -32,7 +32,7 @@ margin-left: 500px;
   
   width: 50%;
   height: 500px;
-  margin-top: -358px;
+  margin-top: -335px;
   margin-left: 500px;
   
   }
@@ -73,6 +73,7 @@ margin-left: 500px;
   margin-top: 10px;
   margin-bottom: 10px;
   height: 30px;
+  padding: 0px 10px;
 }
 
 .input-container label {
@@ -337,5 +338,52 @@ margin-left: 55px;
   color: rgb(83, 83, 83);
  
 
+}
+
+.description {
+  margin-left: 35.5%;
+  margin-top:-5%;
+}
+
+.book-button{
+
+  margin-left: 35.5%;
+  margin-top: 5%;
+  padding: 18px 80px;
+  background-color: rgb(247, 199, 128);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+
+}
+
+.rating{
+  margin-left: 36%;
+  margin-top: 5%;
+
+}
+
+.star{
+
+  margin-left: 15px;
+  color: #316add;
+  
+
+}
+.heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 86%;
+  background-color:rgb(244, 245, 255);
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.heart i {
+  font-size: 70px;
+  color: #707070;
 }
 

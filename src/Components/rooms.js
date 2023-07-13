@@ -2,6 +2,10 @@ import React from 'react'
 import Header from './header'
 import bedroom from '../images/bedroom.jpg'
 import view from '../images/view.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
+
 const Room = () => {
     return (
         <div>
@@ -36,10 +40,28 @@ const Room = () => {
                 <tr>
                     <td>
                         <div className='item-card'>
-                            <img src={view} className='room-view' alt='roomview'/>
-                            <h2 className='room-name'>The People's Brownstone</h2>
-                             <p className='description'>Wifi * Air conditining - Kitchen-heating -smokers</p>
+                            <img src={view} className='room-view' alt='roomview' />
+                            <div>
+                            <h2 className='room-name'>The People's Brownstone</h2> 
+                            <div className='heart'>
+  <FontAwesomeIcon icon={faHeart} style={{ color: "#b6b7b9" }} />
+</div>
 
+                            </div>
+                            <p className='description'>Wifi * Air conditining * Kitchen-heating * smokers <br /> Parkng * Balcony * Animal friendly</p>
+                            <button className='book-button'>BOOK</button>
+                            <div className='rating'
+                            ><h3>
+                                    4.0
+                                    <i class="fas fa-star" style={{ color: '#316add', marginLeft: '30px' }}></i>
+                                    <i class="fas fa-star" style={{ color: '#316add', marginLeft: '8px' }}></i>
+                                    <i class="fas fa-star" style={{ color: '#316add', marginLeft: '8px' }}></i>
+                                    <i class="fas fa-star" style={{ color: '#316add', marginLeft: '8px' }}></i>
+                                    <i class="fas fa-star" style={{ color: '#d6e4ff', marginLeft: '8px' }}></i>
+                                    <span style={{ fontSize: '16px', margin: '10px' }}>(7 Reviews)</span>
+                                </h3>
+
+                            </div>
                         </div>
 
                     </td>

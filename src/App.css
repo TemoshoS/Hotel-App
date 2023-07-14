@@ -557,3 +557,28 @@ margin-left: 55px;
   color: #696969;
   font-size: 22px;
 }
+
+.successful{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  flex-direction: column;
+  margin-top: 200px;
+  background-color: white;
+
+}
+
+.button-success{
+
+  padding: 18px 70px;
+  background-color: rgb(207, 162, 94);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px;
+
+
+}

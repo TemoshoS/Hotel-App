@@ -1,32 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import view from '../images/view.jpg'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Book = () => {
     const [countchlid, setCounterChild] = useState(0);
     const [countadult, setCountAdult] = useState(0);
     const [countnight, setCountNight] = useState(0);
-    const {itemId} = useParams(); // Retrieve the itemId from the URL
-    const [rooms, setRooms] = useState(null)
+    const navigate = useNavigate();
+    const { itemId } = useParams(); // Retrieve the itemId from the URL
+    const [room, setRoom] = useState(null);
+    const [rooms, setRooms] = useState([]);
 
 
-    useEffect(()=>{
-        const fetchRoom = async()=>{
+    useEffect(() => {
+        // Fetch the details of the selected room using the itemId
+        const fetchRoom = async () => {
             try {
-                const roomData = await fetchRoonDetails(itemId);
-                setRooms(roomData);
-                
+                // Fetch the room details using the itemId
+                const roomData = await fetchRoomDetails(itemId);
+                setRoom(roomData);
             } catch (error) {
                 console.log(error.message);
-                
             }
-        }
-    },[itemId]);
+        };
 
-    const fetchRoonDetails = async(itemId)=>{
-        const selectedRoom = rooms.fins((rooms)=>rooms.id===itemId);
+        fetchRoom();
+    }, [itemId]);
+
+    const fetchRoomDetails = async (itemId) => {
+        
+        const selectedRoom = rooms.find((room) => room.id === itemId);
         return selectedRoom;
-    }
+      };
 
     /*children decrement and increment*/
     const incrementChild = () => {
@@ -71,19 +76,22 @@ const Book = () => {
 
     }
 
-    if (!rooms) {
-        return <div>Loading...</div>; // Add a loading state while the room details are being fetched
-      }
+
+    const addTocart=()=>{
+        navigate('/successful')
+    }
+    
+
 
 
     return (
 
 
         <div>
-            <div className='reserve-card'>
+            <div className='reserve-card' >
                 <img src={view} className='room-view' alt='roomview' />
                 <div>
-                    <h2 className='room-name'>{rooms.roomName}</h2>
+                    <h2 className='room-name'>The </h2>
                 </div>
 
                 <div >
@@ -103,7 +111,7 @@ const Book = () => {
                     <span style={{ fontSize: '16px', marginLeft: '50px' }}>total</span>
                 </h3>
 
-                <button className='reserve-button'>RESERVE</button>
+                <button className='reserve-button' onClick={addTocart}>RESERVE</button>
 
             </div>
 

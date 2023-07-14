@@ -5,6 +5,7 @@ import Home from './Components/home'
 import Room from './Components/rooms';
 import ForgotPassword from './Components/forgotPassword';
 import Book from './Components/book';
+import ReserveSuccessful from './Components/reserveSuccessful';
 
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -20,6 +21,8 @@ function App() {
         <Route  path='/home' element={<Home/>}/>
         <Route path='/room' element={<Room/>}/>
         <Route path='/book/:itemId' element={<Book/>}/>
+        <Route path='/successful' element={<ReserveSuccessful/>}/>
+        
       </Routes>
       
       

@@ -566,13 +566,21 @@ margin-left: 55px;
   height: auto;
   flex-direction: column;
   margin-top: 200px;
-  background-color: white;
+  font-weight: bold;
+  
+
+}
+
+.successful i{ 
+  font-size: 100px;
+  color:rgb(207, 162, 94);
 
 }
 
 .button-success{
 
-  padding: 18px 70px;
+  margin-top: 50px;
+  padding: 16px 68px;
   background-color: rgb(207, 162, 94);
   border: none;
   color: white;

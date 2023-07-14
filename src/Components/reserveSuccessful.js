@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import successIcon from '../images/successful.PNG'
+
 
 const ReserveSuccessful = () => {
 
@@ -12,7 +12,7 @@ const ReserveSuccessful = () => {
         <div >
 
             <div className='successful'>
-                <img src={successIcon}/>
+            <i class="bi bi-check2-circle"></i>
                 <h3>Reservation Successful</h3>
                 <p>Your room has been reserved</p>
                 <button onClick={goToHome} className='button-success'>BACK HOME</button>

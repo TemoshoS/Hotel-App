@@ -1,9 +1,8 @@
 import React from 'react'
 import Header from './header'
 import bedroom from '../images/bedroom.jpg'
-import view from '../images/view.jpg'
 import { useNavigate } from 'react-router-dom'
-import { addDoc, collection, getDocs } from 'firebase/firestore'
+import {  collection, getDocs } from 'firebase/firestore'
 import { db } from '../config/firebase'
 import { useEffect, useState } from 'react'
 
@@ -13,8 +12,8 @@ const Room = () => {
     const [rooms, setRooms] = useState([]);
     const navigate = useNavigate();
 
-    const gotoBokings = () => {
-        navigate('/book');
+    const gotoBookings = (itemId) => {
+        navigate(`/book/${itemId}`);
     };
 
     useEffect(() => {
@@ -82,7 +81,7 @@ const Room = () => {
 
 
                             <div className='item-card' key={items.id}>
-                                <img src={view} className='room-view' alt='roomview' />
+                                <img src={items.roomImage} className='room-view' alt='roomview' />
                                 <div>
                                     <h2 className='room-name'>{items.roomName}</h2>
 
@@ -92,7 +91,7 @@ const Room = () => {
 
                                 </div>
                                 <p className='description'> {items.roomDescription}</p>
-                                <button onClick={gotoBokings} className='book-button'>BOOK</button>
+                                <button onClick={() => gotoBookings(items.id)} className='book-button'>BOOK</button>
                                 <div className='rating'>
                                     <h3>
                                         4.0

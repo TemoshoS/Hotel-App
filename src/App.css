@@ -373,6 +373,7 @@ text-decoration: none;
   margin: 0 auto; /* Center horizontally */
   border-radius: 25px;
   transition: 0.3s;
+  margin-bottom: 50px;
 }
 
 .room-view {
@@ -486,7 +487,7 @@ margin-left: 55px;
 .reserve-button{
 
   margin-left: 79%;
-  margin-top: 5%;
+  margin-top: 1%;
   padding: 20px 80px;
   background-color: rgb(247, 199, 128);
   border: none;
@@ -504,7 +505,55 @@ margin-left: 55px;
   
 }
 
+
 .inline {
   display: inline;
 }
 
+.counter-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.counter-wrapper span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.counter-wrapper button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid rgb(184, 184, 184);
+}
+
+
+
+.decrement{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 150px;
+  margin-top: 9px;
+  border: 1px solid rgb(184, 184, 184);
+
+}
+.decrement i {
+  color: #696969;
+  font-size: 22px;
+}
+
+.increment{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 20px;
+  border: 1px solid rgb(184, 184, 184);
+  
+
+}
+.increment i {
+  color: #696969;
+  font-size: 22px;
+}

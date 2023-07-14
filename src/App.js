@@ -19,7 +19,7 @@ function App() {
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
         <Route  path='/home' element={<Home/>}/>
         <Route path='/room' element={<Room/>}/>
-        <Route path='/book' element={<Book/>}/>
+        <Route path='/book/:itemId' element={<Book/>}/>
       </Routes>
       
       

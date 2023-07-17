@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase'
 
 
@@ -84,9 +84,23 @@ const Book = () => {
     }
 
 
-    const addTocart=()=>{
-        navigate('/successful')
-    }
+    const addTocart=async ()=>{
+
+        try {
+            const cartItem= {
+                room:room
+            };
+            const cartRef = await addDoc(collection(db, 'cart'),cartItem);
+            alert('added to cart', cartRef.id);
+            navigate('/successful')
+
+        } catch (error) {
+
+            console.log(error.message);
+            
+        }
+        
+    };
     
 
 

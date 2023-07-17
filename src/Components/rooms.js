@@ -73,7 +73,7 @@ const Room = () => {
                     </td>
                 </tr>
                 <tr>
-                    <td style={{ height: '30px' }}></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -91,7 +91,7 @@ const Room = () => {
 
                                 </div>
                                 <p className='description'> {items.roomDescription}</p>
-                                <button onClick={() => gotoBookings(items.id)} className='book-button'>BOOK</button>
+                               <div className='button'> <button onClick={() => gotoBookings(items.id)} className='book-button'>BOOK</button></div>
                                 <div className='rating'>
                                     <h3>
                                         4.0
@@ -101,8 +101,10 @@ const Room = () => {
                                         <i class="fas fa-star" style={{ color: '#316add', marginLeft: '8px' }}></i>
                                         <i class="fas fa-star" style={{ color: '#d6e4ff', marginLeft: '8px' }}></i>
                                         <span style={{ fontSize: '16px', margin: '10px' }}>(7 Reviews)</span>
+                                        <span className='price'>
                                         <span style={{ marginLeft: '300px', fontWeight: 'bold' }}> R {items.roomPrice}</span>
                                         <span style={{ fontSize: '16px', marginLeft: '50px' }}>/night</span>
+                                        </span>
                                     </h3>
 
                                 </div>
@@ -110,9 +112,7 @@ const Room = () => {
                         ))}
                     </td>
                 </tr>
-                <tr>
-                    <td style={{ height: '3000px' }}></td>
-                </tr>
+               
             </table>
         </div>
     )

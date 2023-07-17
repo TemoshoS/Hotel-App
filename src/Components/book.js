@@ -91,7 +91,7 @@ const Book = () => {
                 room:room
             };
             const cartRef = await addDoc(collection(db, 'cart'),cartItem);
-            alert('added to cart', cartRef.id);
+            alert('added to cart successfully', cartRef.id);
             navigate('/successful')
 
         } catch (error) {

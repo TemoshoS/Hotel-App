@@ -133,55 +133,7 @@ text-decoration: none;
 }
 
 
-/* Styles for screens smaller than 768px */
-@media (max-width: 767px) {
-  .auth-image {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-    margin-left: 0;
-  }
 
-  .login-image {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-    margin-left: 0;
-  }
-
-  .auth-card {
-    width: 90%;
-    margin-top: 50px;
-  }
-
-  .heading {
-    margin-top: 50px;
-    font-size: 20px;
-  }
-
-  .input-container input {
-    width: 80%;
-  }
-
-  .input-container label {
-    font-size: 8px;
-    left: 1em;
-  }
-
-  .password-toggle-icon {
-    left: 75%;
-
-  }
-
-  .submit-button {
-    margin-top: 40px;
-    
-  }
-
-  .login-link {
-    margin-left: 10px;
-  }
-}
 
 /*Auth end*/
 
@@ -192,9 +144,11 @@ text-decoration: none;
   margin-right: 3rem;
   text-decoration: none;
   color: white;
-  font-size: 1.1rem;
+  font-size: 25px;
   font-weight: 600;
 }
+
+
 
 
 .nav-link:hover {
@@ -263,14 +217,7 @@ text-decoration: none;
 }
 
 
-.text-container {
 
-  position: absolute;
-  top: 35%;
-  right: 55%;
-  color: white;
-
-}
 .gym-container {
 
   top:89%;
@@ -340,30 +287,55 @@ text-decoration: none;
   
 }
 
+/*room page*/
+
+.text-container {
+
+  position: absolute;
+  top: 35%;
+  right: 55%;
+  color: white;
+
+}
+.text-container h1 {
+
+  font-size: 120px;
+  font-family: serif;
+
+}
+.text-container h4 {
+
+  font-size: 50px;
+  font-family: serif;
+  word-spacing: 40px;
+
+}
+.text-container h5 {
+  font-size: 70px;
+
+}
+.text-container b {
+   font-size: 18px;
+}
+
+
+
+
+/*facilities*/
 
 .facilities {
-
   text-align: center;
-
   color: rgb(12, 12, 82);
-
-
 }
 
 .facilities h1 {
   font-family: serif;
   font-size: 70px;
-
 }
 
 .facilities p {
-
   font-size: 30px;
-
-
 }
-
-/*facilities*/
 
 .item-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -441,36 +413,6 @@ margin-left: 55px;
   color: #696969;
 }
 
-
-/* Styles for smaller screens */
-@media screen and (max-width: 767px) {
-  .item-card {
-    width: 90%; 
-    height: auto;
-    margin-top: 20px; 
-  }
-
-  .room-view {
-    width: 100%; 
-    height: auto;
-    margin: 0; 
-    margin-bottom: 56px;
-    
-  }
-
-  .room-name,
-  .description,
-  .book-button,
-  .rating {
-    margin-left: 15px; 
-    margin-top: 10px; 
-    text-align: center; 
-  }
-
-  .heart {
-    margin-left: 40%; 
-  }
-}
 
 /*room bookings*/
 .reserve-card {
@@ -607,4 +549,171 @@ margin-left: 55px;
   font-size: 20px;
 
 
+}
+
+
+
+/* Styles for smaller screens */
+@media screen and (max-width: 767px) {
+
+  .auth-image {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .login-image {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .auth-card {
+    width: 90%;
+    margin-top: 50px;
+  }
+
+  .heading {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  .input-container input {
+    width: 80%;
+  }
+
+  .input-container label {
+    font-size: 8px;
+    left: 1em;
+  }
+
+  .password-toggle-icon {
+    left: 75%;
+
+  }
+
+  .submit-button {
+    margin-top: 40px;
+    
+  }
+
+  .login-link {
+    margin-left: 10px;
+  }
+
+
+  .image-container{
+
+    width: 100%;
+    
+
+  }
+  .navbar-links-container a { 
+    color: white;
+    font-size: 15px;
+    
+  }
+  
+  .text-container {
+
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    color: white;
+  
+  }
+  .text-container h1 {
+  
+    font-size: 30px;
+    font-family: serif;
+  
+  }
+  .text-container h4 {
+  
+    font-size: 18px;
+    font-family: serif;
+    word-spacing: 12px;
+  
+  }
+  .text-container h5 {
+    font-size: 20px;
+  
+  }
+  .text-container b {
+     font-size: 15px;
+     font-weight: normal;
+  }
+
+  .facilities {
+    text-align: center;
+    color: rgb(12, 12, 82);
+  }
+  
+  .facilities h1 {
+    font-family: serif;
+    font-size: 45px;
+  }
+  
+  .facilities p {
+    font-size: 15px;
+    
+  }
+  
+
+  .item-card {
+    width: 90%; 
+    height: auto;
+    margin-top: 20px; 
+  }
+
+  .room-view {
+    width: 100%; 
+    height: auto;
+    margin: 0; 
+    margin-bottom: 56px;
+    
+  }
+
+  .room-name,
+  .description,
+  .book-button,
+  .rating {
+    margin-left: 15px; 
+    margin-top: 10px; 
+    text-align: center; 
+  }
+
+  .heart {
+    margin-left: auto; 
+    margin-right: auto;
+  }
+
+  .book-button{
+
+   
+    margin-top: 5%;
+    padding: 18px 80px;
+    background-color: rgb(247, 199, 128);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+  
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .price{
+   margin-left: -50%;
+   margin-top: 5%;
+   
+    
+
+  }
 }

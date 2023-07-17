@@ -32,9 +32,10 @@ const Home = () => {
                             <tr>
                                 <td style={{ height: '30px' }}></td>
                             </tr>
-                            <p >We want your stay at out lush hotel to be truly unforgtable. This is why we give special attention to all of your needs so<br />
+                            <b><p >We want your stay at out lush hotel to be truly unforgtable. This is why we give special attention to all of your needs so<br />
                                 &nbsp; that we can ensure an experiance quite uniquw. Luxury hotels offers the perfect setting with stunning views for leisure<br />
                                 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and our modern luxury resort facilities will help you enjoy the best of all. </p>
+                                </b>
                         </div>
                     </td>
                 </tr>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import view from '../images/view.jpg'
 import { useParams, useNavigate } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../config/firebase'
+
 
 const Book = () => {
     const [countchlid, setCounterChild] = useState(0);
@@ -9,11 +11,11 @@ const Book = () => {
     const navigate = useNavigate();
     const { itemId } = useParams(); // Retrieve the itemId from the URL
     const [room, setRoom] = useState(null);
-    const [rooms, setRooms] = useState([]);
+    
 
 
     useEffect(() => {
-        // Fetch the details of the selected room using the itemId
+        
         const fetchRoom = async () => {
             try {
                 // Fetch the room details using the itemId
@@ -28,11 +30,16 @@ const Book = () => {
     }, [itemId]);
 
     const fetchRoomDetails = async (itemId) => {
-        
-        const selectedRoom = rooms.find((room) => room.id === itemId);
-        return selectedRoom;
+        try {
+          const roomRef = doc(db, 'rooms', itemId);
+          const roomSnapshot = await getDoc(roomRef);
+          return { id: roomSnapshot.id, ...roomSnapshot.data() };
+        } catch (error) {
+          console.log(error.message);
+          return null;
+        }
       };
-
+      
     /*children decrement and increment*/
     const incrementChild = () => {
 
@@ -89,25 +96,27 @@ const Book = () => {
 
         <div>
             <div className='reserve-card' >
-                <img src={view} className='room-view' alt='roomview' />
+                <img src={room && room.roomImage ? room.roomImage : ''} className='room-view' alt='roomview' />
                 <div>
-                    <h2 className='room-name'>The </h2>
+                    <h2 className='room-name'>{room ? room.roomName : ''} </h2>
                 </div>
 
-                <div >
-                    <p className='reserve-description'>Wifi * Air conditining * Kitchen-heating * smokers <br /> Parkng * Balcony * Animal friendly
-                        <span style={{ marginLeft: '390px', fontWeight: 'bold' }}>Children
+                
+                    <p className='reserve-description'>{room ? room.roomDescription :''}</p>
+                    <div>
+                        <span className='reserve-increment'>Children
                             <button className='decrement' onClick={decrementChild}> <i>-</i></button>{countchlid}<button className='increment' onClick={incrementChild}><i>+</i></button>
                         </span>
-                        <br /><span style={{ marginLeft: '600px', fontWeight: 'bold' }}>Adults
-                            <button className='decrement' onClick={decrementAdults}><i>-</i></button>{countadult}<button className='increment' onClick={incrementAdults}><i>+</i></button>
+                        <br /><span className='reserve-increment' >Adults
+                            <button className='decrements' onClick={decrementAdults}><i>-</i></button>{countadult}<button className='increment' onClick={incrementAdults}><i>+</i></button>
                         </span>
-                        <br /><span style={{ marginLeft: '600px', fontWeight: 'bold' }}>Nights
-                            <button className='decrement' onClick={decrementNights}><i>-</i></button>{countnight}<button className='increment' onClick={incrementNights}><i>+</i></button>
-                        </span></p>
-                </div>
+                        <br /><span className='reserve-increment'>Nights
+                            <button className='decrements' onClick={decrementNights}><i>-</i></button>{countnight}<button className='increment' onClick={incrementNights}><i>+</i></button>
+                        </span>
+                        </div>
+              
                 <h3>
-                    <span style={{ marginLeft: '1300px', fontWeight: 'bold' }}> R 500</span>
+                    <span style={{ marginLeft: '1300px', fontWeight: 'bold' }}> R {room ? room.roomPrice : ''}</span>
                     <span style={{ fontSize: '16px', marginLeft: '50px' }}>total</span>
                 </h3>
 

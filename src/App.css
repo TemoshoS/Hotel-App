@@ -527,19 +527,30 @@ margin-left: 55px;
   border: 1px solid rgb(184, 184, 184);
 }
 
-
-
 .decrement{
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-left: 140px;
+  border: 1px solid rgb(184, 184, 184);
+
+}
+
+.decrements{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
   margin-left: 150px;
   margin-top: 9px;
   border: 1px solid rgb(184, 184, 184);
 
 }
 .decrement i {
+  color: #696969;
+  font-size: 22px;
+}
+
+.decrements i {
   color: #696969;
   font-size: 22px;
 }
@@ -556,6 +567,13 @@ margin-left: 55px;
 .increment i {
   color: #696969;
   font-size: 22px;
+}
+
+.reserve-increment{
+
+  margin-left: 1150px;
+  font-weight: bold;
+
 }
 
 .successful{

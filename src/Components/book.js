@@ -119,19 +119,19 @@ const Book = () => {
                     <p className='reserve-description'>{room ? room.roomDescription :''}</p>
                     <div>
                         <span className='reserve-increment'>Children
-                            <button className='decrement' onClick={decrementChild}> <i>-</i></button>{countchlid}<button className='increment' onClick={incrementChild}><i>+</i></button>
+                            <button className='decrement' onClick={decrementChild}> <i>-</i></button><span className="count">{countchlid}</span><button className='increment' onClick={incrementChild}><i>+</i></button>
                         </span>
                         <br /><span className='reserve-increment' >Adults
-                            <button className='decrements' onClick={decrementAdults}><i>-</i></button>{countadult}<button className='increment' onClick={incrementAdults}><i>+</i></button>
+                            <button className='decrements' onClick={decrementAdults}><i>-</i></button><span className="count">{countadult}</span><button className='increment' onClick={incrementAdults}><i>+</i></button>
                         </span>
                         <br /><span className='reserve-increment'>Nights
-                            <button className='decrements' onClick={decrementNights}><i>-</i></button>{countnight}<button className='increment' onClick={incrementNights}><i>+</i></button>
+                            <button className='decrements' onClick={decrementNights}><i>-</i></button><span className="count">{countnight}</span><button className='increment' onClick={incrementNights}><i>+</i></button>
                         </span>
                         </div>
               
-                <h3>
-                    <span style={{ marginLeft: '1300px', fontWeight: 'bold' }}> R {room ? room.roomPrice : ''}</span>
-                    <span style={{ fontSize: '16px', marginLeft: '50px' }}>total</span>
+                <h3  className='roomPrice'>
+                    <span> R {room ? room.roomPrice : ''}</span>
+                    <span className='total'>total</span>
                 </h3>
 
                 <button className='reserve-button' onClick={addTocart}>RESERVE</button>

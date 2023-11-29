@@ -136,38 +136,61 @@ body {
 
 /*Auth end*/
 
-
-
-
-.navbar-links-container a {
-  margin-right: 3rem;
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  font-weight: 600;
-}
-
-
-
-
-.nav-link:hover {
-  text-decoration: none;
-  border-bottom: 3px solid white;
-}
-
-
-
-
-.nav-container {
-  position: absolute;
-  top: 0;
-  right: 0;
+.navbar {
+ height: 70px;
   padding: 10px;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-menu {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  /* background-color: #ccc; */
+  width: 100%;
+  text-align: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
 }
+
+.navbar-menu a {
+  padding: 18px;
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  background-color: #4e555a;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  display: none;
+}
+
+.bar {
+  height: 3px;
+  width: 25px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: background-color 0.3s ease;
+}
+
+/*  */
 
 .image-container {
   
@@ -177,8 +200,8 @@ body {
 }
 
 .hotel-image {
-  width: 100%;
-  height: 800px;
+  width: 1900px;
+  height: 700px;
   
 }
 
@@ -221,34 +244,37 @@ body {
 
 
 
-/*facilities*/
+/*Rooms*/
 
-/* Add these styles to your existing CSS */
+/* start */
 
 .facilities {
   display: flex;
   flex-wrap: wrap;
-  
 }
 
 .facility {
   width: 300px;
   margin: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facility:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(65, 89, 90, 0.2);
 }
 
 .facility-image {
   width: 100%;
-  height: 200px; 
-  object-fit: cover;
-  border-radius: 8px;
+  height: auto;
+  border-radius: 1px;
 }
 
 .facility-details {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .facility-name {
@@ -257,7 +283,8 @@ body {
 }
 
 .facility-description {
-  margin-top: 5px;
+  margin-top: 8px;
+  color: #555;
 }
 
 .facility-price {
@@ -265,24 +292,22 @@ body {
   font-size: 1.1rem;
 }
 
-.facility-price-label {
-  font-weight: bold;
-}
-
 .facility-book-button {
   margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #3498db;
+  padding: 10px 16px;
+  background-color: #ccc;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  
 }
 
 .facility-book-button:hover {
-  background-color: #2980b9;
+  background-color: #ccc;
 }
+
 
 
 /*room bookings*/
@@ -458,7 +483,7 @@ body {
 }
 .searchButton{
   padding: 10px;
-  background-color: #3498db;
+  background-color: #ccc;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -483,431 +508,38 @@ body {
 
 
 /* Styles for smaller screens */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-  .auth-image {
+  .navbar-menu {
+    position: static;
+    transform: scaleY(1);
+  }
+
+  .navbar-menu.open {
+    transform: scaleY(1);
+  }
+
+  .navbar-menu a {
     width: 100%;
-    height: auto;
-    margin-top: 0;
-    margin-left: 0;
   }
 
-  .login-image {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-    margin-left: 0;
-  }
-
-  .auth-card {
-    width: 90%;
-    margin-top: 50px;
-  }
-
-  .heading {
-    margin-top: 50px;
-    font-size: 20px;
-  }
-
-  .input-container input {
-    width: 80%;
-  }
-
-  .input-container label {
-    font-size: 8px;
-    left: 1em;
-  }
-
-  .password-toggle-icon {
-    left: 75%;
-
-  }
-
-  .submit-button {
-    margin-top: 40px;
-
-  }
-
-  .login-link {
-    margin-left: 10px;
-  }
-
-
-  .image-container {
-
-    width: 100%;
-
-  }
-
-  .navbar-links-container a {
-    color: white;
-    font-size: 15px;
-
-  }
-
-  .text-container {
-
-    position: absolute;
-    top: 25%;
-    left: 10%;
-    color: white;
-
-  }
-
-  .text-container h1 {
-
-    font-size: 30px;
-    font-family: serif;
-
-  }
-
-  .text-container h4 {
-
-    font-size: 18px;
-    font-family: serif;
-    word-spacing: 12px;
-
-  }
-
-  .text-container h5 {
-    font-size: 20px;
-
-  }
-
-  .text-container b {
-    font-size: 15px;
-    font-weight: normal;
-  }
-
-  .facilities {
-    text-align: center;
-    color: rgb(12, 12, 82);
-  }
-
-  .facilities h1 {
-    font-family: serif;
-    font-size: 45px;
-  }
-
-  .facilities p {
-    font-size: 15px;
-
-  }
-
-
-  .item-card {
-    width: 90%;
-    height: auto;
-    margin-top: 20px;
-  }
-
-  .room-view {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    margin-bottom: 56px;
-
-  }
-
-  
-  .description,
-  .book-button,
-  .rating {
-    margin-left: 15px;
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  .room-name{
-    margin-left: 15px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 25px;
-
-  }
-
-  .heart {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .book-button {
-
-
-    margin-top: 5%;
-    padding: 18px 80px;
-    background-color: rgb(247, 199, 128);
-    border: none;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-
-  }
-
-  .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-
-  .price {
-    margin-left: -50%;
-    margin-top: 5%;
-
-  }
-
-
-
-
-  .gym-container {
-
-    top: 87%;
-    right: 25%;
-    position: absolute;
-    background-color: white;
-    width: 200px;
-    text-align: center;
-    color: rgb(12, 12, 82);
-
-
-  }
-
-  .gym-container h1 {
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .poolside-container {
-
-    top: 87%;
-    right: 25%;
-    position: absolute;
-    background-color: white;
-    width: 200px;
-    text-align: center;
-    color: rgb(12, 12, 82);
-
-  }
-
-  .poolside-container h1 {
-
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .spa-container {
-
-    top: 87%;
-    right: 25%;
-    position: absolute;
-    background-color: white;
-    width: 200px;
-    text-align: center;
-    color: rgb(12, 12, 82);
-
-  }
-
-  .spa-container h1 {
-
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .swimmingpool-container {
-
-    top: 87%;
-    right: 25%;
-    position: absolute;
-    background-color: white;
-    width: 200px;
-    text-align: center;
-    color: rgb(12, 12, 82);
-
-
-  }
-
-  .swimmingpool-container h1 {
-    font-size: 20px;
-    font-weight: bold;
-
-  }
-
-  .resturant-container {
-
-    top: 87%;
-    right: 25%;
-    position: absolute;
-    background-color: white;
-    width: 200px;
-    text-align: center;
-    color: rgb(12, 12, 82);
-
-
-  }
-
-  .resturant-container h1 {
-    font-size: 20px;
-    font-weight: bold;
-
-  }
-
-  /*images*/
-
-  .gym-image {
-    margin-left: auto;
-    margin-right: auto;
+  .menu-toggle {
     display: block;
-    width: 80%;
-    height: 400px;
   }
 
-  .poolside-image {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 80%;
-    height: 400px;
+  .menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
   }
 
-  .spa-image {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 80%;
-    height: 400px;
+  .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
   }
 
-  .swimmingpool-image {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 80%;
-    height: 400px;
+  .menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
-
-  .resturant-image {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 80%;
-    height: 400px;
-  }
-
-  /*room bookings*/
-  .reserve-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: white;
-    height: auto;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 50px;
-    border-radius: 25px;
-    transition: 0.3s;
-  }
-
-  .reserve-button {
-
-    margin-left: 30%;
-    margin-bottom: 5%;
-    padding: 10px 50px;
-    background-color: rgb(247, 199, 128);
-    border: none;
-    color: white;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 15px;
-
-  }
-
-  .reserve-description {
-
-    margin-left: 5%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    text-align: center;
-
-  }
-
-
-
-  .decrement {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    margin-left: 37px;
-    border: 1px solid rgb(184, 184, 184);
-    
-
-  }
-
-  .decrements {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    margin-left: 50px;
-
-    border: 1px solid rgb(184, 184, 184);
-
-  }
-
-  .decrement i {
-    color: #696969;
-    font-size: 22px;
-  }
-
-  .decrements i {
-    color: #696969;
-    font-size: 22px;
-  }
-
-  .increment {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    margin-left: 20px;
-    border: 1px solid rgb(184, 184, 184);
-
-
-
-  }
-
-  .increment i {
-    color: #696969;
-    font-size: 22px;
-  }
-
-  .reserve-increment {
-
-    margin-left: 70px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-
-
-  }
-
-  .count {
-    margin: 0 10px;
-    font-weight: bold;
-  }
-
-
-  .roomPrice {
-    margin-left: 20%;
-    font-weight: bold;
-    margin-bottom: 10%;
-    margin-top: 10%;
-
-  }
-
-  .total {
-    font-size: 16px;
-    margin-left: 50px;
-
-  }
-
-  
-
-
 }

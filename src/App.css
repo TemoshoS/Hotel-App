@@ -156,9 +156,7 @@ body {
 }
 
 
-.image-container {
-  position: relative;
-}
+
 
 .nav-container {
   position: absolute;
@@ -171,122 +169,19 @@ body {
   gap: 10px;
 }
 
+.image-container {
+  
+    width: 100%;
+    height: 100%;
+  
+}
+
 .hotel-image {
   width: 100%;
-  height: auto;
+  height: 800px;
+  
 }
 
-.gym-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  height: 700px;
-}
-
-.poolside-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  height: 700px;
-}
-
-.spa-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  height: 700px;
-}
-
-.swimmingpool-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  height: 700px;
-}
-
-.resturant-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 80%;
-  height: 700px;
-}
-
-
-
-.gym-container {
-
-  top: 89%;
-  right: 40%;
-  position: absolute;
-  background-color: white;
-  width: 400px;
-  text-align: center;
-  color: rgb(12, 12, 82);
-  font-weight: bold;
-  font-size: 29px;
-
-}
-
-.poolside-container {
-
-  top: 89%;
-  right: 35%;
-  position: absolute;
-  background-color: white;
-  width: 600px;
-  text-align: center;
-  color: rgb(12, 12, 82);
-  font-weight: bold;
-  font-size: 29px;
-
-}
-
-.spa-container {
-
-  top: 89%;
-  right: 35%;
-  position: absolute;
-  background-color: white;
-  width: 600px;
-  text-align: center;
-  color: rgb(12, 12, 82);
-  font-weight: bold;
-  font-size: 29px;
-
-}
-
-.swimmingpool-container {
-
-  top: 89%;
-  right: 35%;
-  position: absolute;
-  background-color: white;
-  width: 600px;
-  text-align: center;
-  color: rgb(12, 12, 82);
-  font-weight: bold;
-  font-size: 29px;
-
-}
-
-.resturant-container {
-
-  top: 89%;
-  right: 35%;
-  position: absolute;
-  background-color: white;
-  width: 600px;
-  text-align: center;
-  color: rgb(12, 12, 82);
-  font-weight: bold;
-  font-size: 29px;
-
-}
 
 /*room page*/
 
@@ -328,96 +223,65 @@ body {
 
 /*facilities*/
 
+/* Add these styles to your existing CSS */
+
 .facilities {
-  text-align: center;
-  color: rgb(12, 12, 82);
-}
-
-.facilities h1 {
-  font-family: serif;
-  font-size: 70px;
-}
-
-.facilities p {
-  font-size: 30px;
-}
-
-.item-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
-  height: 500px;
-  width: 80%;
-  margin: 0 auto;
-  /* Center horizontally */
-  border-radius: 25px;
-  transition: 0.3s;
-  margin-bottom: 50px;
-}
-
-.room-view {
-
-  width: 30%;
-  height: 80%;
-  border-radius: 15px;
-  margin-top: 50px;
-  margin-left: 55px;
-}
-
-.room-name {
-
-  margin-left: 35.5%;
-  margin-top: -27%;
-  color: rgb(83, 83, 83);
-
-
-}
-
-.description {
-  margin-left: 35.5%;
-  margin-top: -5%;
-}
-
-.book-button {
-
-  margin-left: 35.5%;
-  margin-top: 5%;
-  padding: 18px 80px;
-  background-color: rgb(247, 199, 128);
-  border: none;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-
-}
-
-.rating {
-  margin-left: 36%;
-  margin-top: 5%;
-
-}
-
-.star {
-
-  margin-left: 15px;
-  color: #316add;
-
-
-}
-
-.heart {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 86%;
-  background-color: rgb(244, 245, 255);
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+  flex-wrap: wrap;
+  
 }
 
-.heart i {
-  font-size: 70px;
-  color: #696969;
+.facility {
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.facility-image {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.facility-details {
+  margin-top: 10px;
+}
+
+.facility-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.facility-description {
+  margin-top: 5px;
+}
+
+.facility-price {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.facility-price-label {
+  font-weight: bold;
+}
+
+.facility-book-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.facility-book-button:hover {
+  background-color: #2980b9;
 }
 
 
@@ -575,6 +439,46 @@ body {
 
 
 }
+
+/* new home page */
+.searchForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px 0;
+
+}
+.label {
+  margin: 10px 0;
+  color: #696969;
+}
+.input{
+  padding: 8px;
+  margin: 0 0 0 10px;
+}
+.searchButton{
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.room {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+}
+.price{
+  font-weight: bold;
+}
+.bookButton {
+  padding: 8px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
 
 
 
@@ -1003,6 +907,7 @@ body {
 
   }
 
+  
 
 
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { doc, getDoc, addDoc, collection } from 'firebase/firestore';
-import { db } from '../config/firebase'
+import { db , auth} from '../config/firebase'
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
 
 
 const Book = () => {
@@ -11,6 +12,7 @@ const Book = () => {
     const navigate = useNavigate();
     const { itemId } = useParams(); // Retrieve the itemId from the URL
     const [room, setRoom] = useState(null);
+    const [user, setUser] = useState(null);
     
 
 

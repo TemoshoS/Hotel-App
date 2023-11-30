@@ -270,9 +270,11 @@ body {
 }
 
 /* view hotel */
-/* Add these styles to your existing stylesheet */
+
 
 .reserve-card {
+  
+  width: 80%;
   border: 1px solid #ddd;
   padding: 20px;
   margin: 20px;
@@ -280,28 +282,36 @@ body {
   /* transition: transform 0.3s ease-in-out; */
 }
 
-.reserve-card:hover {
-  /* transform: scale(1.05); */
+.images-container{
+  display: flex;
+  flex-direction: row;
 }
 
 .room-view {
-  width: 50%;
-  max-height: 300px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-.room-view1 {
-  width:20%;
+  width: 100%;
+  max-height: 900px;
   object-fit: cover;
   
 }
-.room-view2 {
-  width:20%;
+
+.room-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.room-view1 {
+  width:14%;
   object-fit: cover;
+  margin-bottom: 10px;
+}
+.room-view2 {
+  width:14%;
+  object-fit: cover;
+  margin-bottom:10px;
   
 }
 .room-view3 {
-  width:20%;
+  width:14%;
   object-fit: cover;
   
 }

@@ -1,7 +1,6 @@
-// Footer.js
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/Temoshoroyal.jpg';
 
 const Footer = () => {
   return (
@@ -10,50 +9,48 @@ const Footer = () => {
         <div className="footer-section">
           <div className="footer-logo">
             <Link to="/">
-              <img src="/path/to/your/logo.png" alt="Your Logo" />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
         </div>
         <div className="footer-section">
           <h3>About Us</h3>
-          <p>Your description about the hotel and its values.</p>
+          <p>Book your stay with us and embrace the Luxury Hotels experience. Redefine luxury at the most affordable rates and create lasting memories with us.</p>
         </div>
         <div className="footer-section">
           <h3>Services</h3>
           <ul>
-            <li>
-              <Link to="/rooms">Rooms</Link>
-            </li>
-            <li>
-              <Link to="/amenities">Amenities</Link>
-            </li>
+              <Link to="/">Rooms</Link>
             
           </ul>
         </div>
         <div className="footer-section">
           <h3>Contact Us</h3>
           <p>
-            Address: Your Hotel Address <br />
-            Email: your.email@example.com <br />
-            Phone: +1 123 456 7890
+            Address: Tembisa <br />
+            Email: temoshomaduane.com <br />
+            Phone: +277 213 719 77
           </p>
         </div>
         <div className="footer-section">
           <h3>Social Media</h3>
           <div className="social-icons">
             
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/temosho.shaku" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook"></i>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter"></i>
+            <a href="https://github.com/TemoshoS" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/temosho-shaku-a2598917b/" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-linkedin"></i>
             </a>
            
           </div>
         </div>
       </div>
       <div className="copyright">
-        <p>&copy; 2023 Your Hotel Name. All rights reserved.</p>
+        <p>&copy; 2023 Temosho Shaku. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -23,18 +23,22 @@ body {
 /*Auth end*/
 
 .navbar {
- height: 50px;
+ height: 80px;
   padding: 10px;
   color: #ccc;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s ease;
+  align-items: center;
+  margin-bottom: 1px;
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  width: 75px;
+  height: 75px;
+  border-radius: 37.5px;
+  
+  
 }
 
 .navbar-menu {
@@ -270,23 +274,38 @@ body {
 
 .reserve-card {
   border: 1px solid #ddd;
-  border-radius: 8px;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  /* transition: transform 0.3s ease-in-out; */
 }
 
 .reserve-card:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 .room-view {
-  width: 100%;
+  width: 50%;
   max-height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  margin-right: 10px;
 }
+.room-view1 {
+  width:20%;
+  object-fit: cover;
+  
+}
+.room-view2 {
+  width:20%;
+  object-fit: cover;
+  
+}
+.room-view3 {
+  width:20%;
+  object-fit: cover;
+  
+}
+
 
 .room-name {
   font-size: 24px;
@@ -329,7 +348,7 @@ body {
 /* Footer */
 
 .footer {
-  background-color: #333;
+  background-color: #555858;
   color: #fff;
   padding: 40px 0;
   text-align: center;
@@ -349,6 +368,8 @@ body {
 
 .footer-logo img {
   width: 100px; 
+  height: 100px;
+  border-radius: 50px;
 }
 
 .social-icons a {

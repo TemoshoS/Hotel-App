@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchRoomDetails } from '../services/roomServices';
 import { bookHotel } from '../services/roomServices';
+import NavBar from './navBar';
+import Footer from './footer';
 
 
 
@@ -41,8 +43,12 @@ const Book = () => {
 
     return (
         <div>
+            <NavBar/>
         <div className='reserve-card'>
           <img src={room && room.roomImage ? room.roomImage : ''} className='room-view' alt='roomview' />
+          <img src={room && room.roomImage ? room.roomImage : ''} className='room-view1' alt='roomview' />
+          <img src={room && room.roomImage ? room.roomImage : ''} className='room-view2' alt='roomview' />
+          <img src={room && room.roomImage ? room.roomImage : ''} className='room-view3' alt='roomview' />
           <div>
             <h2 className='room-name'>{room ? room.roomName : ''}</h2>
           </div>
@@ -55,6 +61,8 @@ const Book = () => {
             RESERVE
           </button>
         </div>
+
+        <Footer/>
       </div>
     )
 }

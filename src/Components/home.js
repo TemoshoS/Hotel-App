@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './header';
 import hotel from '../images/hotel.jpg';
 import gym from '../images/gym.jpg'
 import poolside from '../images/poolside.jpg'
@@ -18,7 +17,7 @@ const Home = () => {
                     <td>
                         <div className='image-container'>
                             <img src={hotel} className='hotel-image' alt='Hotel' />
-                           <Header/>
+                           
                         </div>
                     </td>
                 </tr>

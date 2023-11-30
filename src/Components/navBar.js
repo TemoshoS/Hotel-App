@@ -19,7 +19,6 @@ const NavBar = () => {
       </div>
       <div className='menu-toggle' onClick={toggleMenu}>
         
-        <div className='bar'></div>
       </div>
     </nav>
   );

@@ -3,101 +3,11 @@
   padding: 0;
 }
 
-.App {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  flex-direction: column;
-}
-
 body {
   background-color: snow;
 
 }
 
-.auth-image {
-
-
-  width: 50%;
-  height: 100%;
-  margin-top: -46.9%;
-  margin-left: 480px;
-
-}
-
-.login-image {
-
-
-  width: 50%;
-  height: 100%;
-  margin-top: -370px;
-  margin-left: 480px;
-
-}
-
-.auth {
-  margin-left: 65px;
-}
-
-.auth-card {
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
-  height: 50rem;
-  width: 50%;
-  margin: 10vh auto;
-
-}
-
-
-.heading {
-  margin-top: 100px;
-  font-size: 3.4rem;
-}
-
-
-
-.input-container {
-  position: relative;
-}
-
-
-.input-container input {
-  border: 1px solid gray;
-  border-radius: 2px;
-  position: relative;
-  width: 300px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 30px;
-  padding: 0px 10px;
-}
-
-.input-container label {
-  font-weight: normal;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 1.5em;
-  background-color: white;
-  padding: 0 5px;
-}
-
-
-
-.password-input-container {
-  position: relative;
-}
-
-.password-toggle-icon {
-  position: absolute;
-  top: 50%;
-  left: 280px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
 
 .fa-eye:before {
   content: '\f06e';
@@ -107,37 +17,13 @@ body {
   content: '\f070';
 }
 
-.input-container .rememberme {
-
-  width: 15px;
-  height: 10px;
-
-}
-
-
-.submit-button {
-  margin-top: 30px;
-  padding: 6px 30px;
-  margin-bottom: 20px;
-  background-color: rgb(247, 199, 128);
-  border: none;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.login-link {
-  color: red;
-  text-decoration: none;
-}
-
 
 
 
 /*Auth end*/
 
 .navbar {
- height: 70px;
+ height: 50px;
   padding: 10px;
   color: #ccc;
   display: flex;
@@ -157,7 +43,6 @@ body {
   position: absolute;
   top: 60px;
   left: 0;
-  /* background-color: #ccc; */
   width: 100%;
   text-align: center;
   transform: scaleY(0);
@@ -191,16 +76,27 @@ body {
 }
 
 /*  */
-
-.image-container {
-  
-    width: 100%;
-    height: 100%;
+.slide-container {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   
 }
 
+
+
+.spanStyle {
+
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 20px;
+
+}
+
 .hotel-image {
-  width: 1900px;
+  width: 100%;
   height: 700px;
   
 }
@@ -208,37 +104,33 @@ body {
 
 /*room page*/
 
-.text-container {
 
-  position: absolute;
-  top: 35%;
-  right: 55%;
-  color: white;
 
-}
+.caption-container h1 {
 
-.text-container h1 {
-
-  font-size: 120px;
+  font-size: 60px;
   font-family: serif;
-
+  color: white;
 }
 
-.text-container h4 {
+.caption-container h4 {
 
   font-size: 50px;
   font-family: serif;
   word-spacing: 40px;
+  color: white;
 
 }
 
-.text-container h5 {
+.caption-container h5 {
   font-size: 70px;
+  color: white;
 
 }
 
-.text-container b {
+.text-container p {
   font-size: 18px;
+  color: white;
 }
 
 
@@ -248,14 +140,16 @@ body {
 
 /* start */
 
-.facilities {
+.facilities-grid {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  
 }
 
 .facility {
   width: 300px;
-  margin: 20px;
   padding: 15px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -267,10 +161,21 @@ body {
   box-shadow: 0 0 20px rgba(65, 89, 90, 0.2);
 }
 
+.heart-button {
+  position: absolute;
+  top: 2px;
+  right: 18px;
+  font-size: 4rem;
+  color: #ccc;
+  border: none;
+  background-color: transparent;
+}
+
+
 .facility-image {
   width: 100%;
   height: auto;
-  border-radius: 1px;
+  
 }
 
 .facility-details {
@@ -278,199 +183,55 @@ body {
 }
 
 .facility-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem; 
   font-weight: bold;
 }
 
 .facility-description {
   margin-top: 8px;
-  color: #555;
+  font-size: 1rem;
+  color: #777; 
 }
 
 .facility-price {
   margin-top: 10px;
-  font-size: 1.1rem;
+  font-size: 1.2rem; 
+  color: #2ecc71; 
+}
+
+.facility-price-label {
+  color: #555; 
 }
 
 .facility-book-button {
-  margin-top: 10px;
-  padding: 10px 16px;
-  background-color: #ccc;
+  margin-top: 15px;
+  width: 80px;
+  height: 30px;
+  background-color: #ccc; 
   color: #fff;
   border: none;
-  border-radius: 4px;
+  
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
 }
 
 .facility-book-button:hover {
-  background-color: #ccc;
+  background-color: #fff; 
+  color: #ccc;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
 
 
 /*room bookings*/
-.reserve-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
-  height: 500px;
-  width: 1500px;
-  margin: 0 auto;
-  margin-top: 150px;
-  border-radius: 25px;
-  transition: 0.3s;
-}
-
-.reserve-button {
-
-  margin-left: 79%;
-  margin-top: 1%;
-  padding: 20px 80px;
-  background-color: rgb(247, 199, 128);
-  border: none;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 20px;
-
-}
-
-.reserve-description {
-
-  margin-left: 35.5%;
-  margin-top: 6%;
-
-}
-
-
-.inline {
-  display: inline;
-}
-
-.counter-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.counter-wrapper span {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.counter-wrapper button {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: 1px solid rgb(184, 184, 184);
-}
-
-.decrement {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  margin-left: 140px;
-  border: 1px solid rgb(184, 184, 184);
-
-}
-
-.decrements {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  margin-left: 150px;
-  margin-top: 9px;
-  border: 1px solid rgb(184, 184, 184);
-
-}
-
-.decrement i {
-  color: #696969;
-  font-size: 22px;
-}
-
-.decrements i {
-  color: #696969;
-  font-size: 22px;
-}
-
-.increment {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  margin-left: 20px;
-  border: 1px solid rgb(184, 184, 184);
-
-
-}
-
-.increment i {
-  color: #696969;
-  font-size: 22px;
-}
-
-.reserve-increment {
-
-  margin-left: 1150px;
-  font-weight: bold;
-
-}
-
-.count {
-  margin: 0 10px;
-  font-weight: bold;
-}
-.roomPrice {
-  margin-left: 1300px;
-  font-weight: bold;
-
-}
-
-.total {
-  font-size: 16px;
-  margin-left: 50px;
-
-}
-
-.successful {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  flex-direction: column;
-  margin-top: 200px;
-  font-weight: bold;
-
-
-}
-
-.successful i {
-  font-size: 100px;
-  color: rgb(207, 162, 94);
-
-}
-
-.button-success {
-
-  margin-top: 50px;
-  padding: 16px 68px;
-  background-color: rgb(207, 162, 94);
-  border: none;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 20px;
-
-
-}
 
 /* new home page */
 .searchForm {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px 0;
+  height: 100px;
+  
 
 }
 .label {
@@ -504,7 +265,102 @@ body {
   cursor: pointer;
 }
 
+/* view hotel */
+/* Add these styles to your existing stylesheet */
 
+.reserve-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.reserve-card:hover {
+  transform: scale(1.05);
+}
+
+.room-view {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.room-name {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.reserve-description {
+  font-size: 16px;
+  color: #555;
+}
+
+.roomPrice {
+  font-size: 24px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  font-size: 18px;
+  color: #888;
+}
+
+.reserve-button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.reserve-button:hover {
+  background-color: #2980b9;
+}
+
+/* Footer */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.footer-section {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 100px; 
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.copyright {
+  margin-top: 20px;
+}
 
 
 /* Styles for smaller screens */
@@ -541,5 +397,12 @@ body {
 
   .menu-toggle.open .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
+  }
+  .container {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    flex: none;
   }
 }

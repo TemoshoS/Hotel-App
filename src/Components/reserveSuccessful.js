@@ -6,7 +6,7 @@ const ReserveSuccessful = () => {
 
     const navigate = useNavigate();
     const goToHome = () => {
-        navigate('/home');
+        navigate('/');
     }
     return (
         <div >

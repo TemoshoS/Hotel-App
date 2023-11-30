@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './header'
 import bedroom from '../images/bedroom.jpg'
 import { useNavigate } from 'react-router-dom'
 import {  collection, getDocs } from 'firebase/firestore'
@@ -52,7 +51,7 @@ const Room = () => {
                     <td>
                         <div className='image-container'>
                             <img src={bedroom} className='hotel-image' alt='Hotel' />
-                            <Header />
+                      
                         </div>
                     </td>
                 </tr>

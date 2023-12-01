@@ -84,7 +84,7 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  
+ 
 }
 
 
@@ -238,6 +238,8 @@ body {
   
 
 }
+
+
 .label {
   margin: 10px 0;
   color: #696969;
@@ -246,6 +248,42 @@ body {
   padding: 8px;
   margin: 0 0 0 10px;
 }
+
+.dropdown-card {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-card div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdown-card div:last-child {
+  border-bottom: none;
+}
+.dropdown-card span {
+  margin-right: 10px;
+  width: 60px; 
+}
+
+.dropdown-card button {
+  padding: 5px 10px;
+  background-color: #ccc;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
 .searchButton{
   padding: 10px;
   background-color: #ccc;

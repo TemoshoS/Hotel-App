@@ -4,6 +4,7 @@ import { fetchRoomDetails } from '../services/roomServices';
 import { bookHotel } from '../services/roomServices';
 import NavBar from './navBar';
 import Footer from './footer';
+import { fetchData } from '../services/apis';
 
 
 
@@ -26,7 +27,11 @@ const Book = () => {
         };
 
         fetchRoom();
+   fetchData();
+        
     }, [itemId]);
+
+    
 
 
     const bookRoom = async () => {
@@ -60,11 +65,12 @@ const Book = () => {
                         <h3 className='roomPrice'>
                             <span>R {room ? room.roomPrice : ''}</span>
 
-                        </h3><
-                            button className='reserve-button' onClick={bookRoom}>
+                        </h3>< button className='reserve-button' onClick={bookRoom}>
                             RESERVE
                         </button>
                     </div>
+
+                    <div></div>
                 </div>
 
                 <div>

@@ -6,9 +6,9 @@ import NavBar from './navBar';
 import Footer from './footer';
 import { fetchData } from '../services/apis';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faCar, faSwimmingPool, faWifi, faPlane, faDumbbell } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faCoffee, faCar, faSwimmingPool, faWifi, faPlane, faDumbbell, } from '@fortawesome/free-solid-svg-icons';
+import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
+import { useLocation } from 'react-router-dom';
 
 const Book = () => {
     const navigate = useNavigate();
@@ -18,6 +18,7 @@ const Book = () => {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
 
+    const searchParams = useLocation().state?.searchParams;
 
     useEffect(() => {
 
@@ -74,11 +75,13 @@ const Book = () => {
 
                         <div className='room-user-card'>
                             <div className='input-container'>
-                                <label>Number of days</label><br></br>
-                                <input type="text" value={` ${9}`} readOnly /><br></br>
+                                <label>Check In Date</label><br></br>
+                                <input type="text" readOnly value={searchParams?.checkInDate || ''} /><br></br>
+                                <label>Check Out Date</label><br></br>
+                                <input type="text" readOnly value={searchParams?.checkOutDate || ''} /><br></br>
 
 
-                                <label>Number of rooms</label><br></br>
+                                <label>Guests</label><br></br>
                                 <input
                                     type="text"
                                     value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
@@ -118,7 +121,7 @@ const Book = () => {
                                 <span>Price: R{calculateTotalPrice()} </span>
 
                             </h3>< button className='reserve-button' onClick={bookRoom}>
-                                PAY
+                                PAY <FontAwesomeIcon icon={faCcVisa} size="2x" />
                             </button>
                         </div>
                     </div>

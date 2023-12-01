@@ -27,11 +27,11 @@ const Book = () => {
         };
 
         fetchRoom();
-   fetchData();
-        
+        fetchData();
+
     }, [itemId]);
 
-    
+
 
 
     const bookRoom = async () => {
@@ -47,27 +47,30 @@ const Book = () => {
 
 
     return (
-        <div>
+        <div >
             <NavBar />
             <div className='reserve-card'>
                 <div className='images-container'>
                     <div>
                         <img src={room && room.roomImage ? room.roomImage : ''} className='room-view' alt='roomview' />
                     </div>
-                    <div className='room-container'>
-                        <img src={room && room.roomImage ? room.roomImage : ''} className='room-view1' alt='roomview' />
-                        <img src={room && room.roomImage ? room.roomImage : ''} className='room-view2' alt='roomview' />
-                        <img src={room && room.roomImage ? room.roomImage : ''} className='room-view3' alt='roomview' />
-
-                    </div>
 
                     <div>
-                        <h3 className='roomPrice'>
-                            <span>R {room ? room.roomPrice : ''}</span>
+                       
+                        <div className='price-card'>
+                        <input type="text" value={`Number of Days: ${9}`} readOnly />
+                        <input
+                            type="text"
+                            value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
+                            readOnly
+                        />
+                            <h3 className='roomPrice'>
+                                <span>R {room ? room.roomPrice : ''}</span>
 
-                        </h3>< button className='reserve-button' onClick={bookRoom}>
-                            RESERVE
-                        </button>
+                            </h3>< button className='reserve-button' onClick={bookRoom}>
+                                RESERVE
+                            </button>
+                        </div>
                     </div>
 
                     <div></div>

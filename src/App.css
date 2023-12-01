@@ -326,35 +326,18 @@ body {
 }
 
 .room-view {
+  width: 80%;
+  max-height: 500px;
+  object-fit: cover;
+  
+}
+.price-card{
   width: 100%;
-  max-height: 900px;
-  object-fit: cover;
+  padding: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
   
 }
-
-.room-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
-}
-.room-view1 {
-  width:14%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-.room-view2 {
-  width:14%;
-  object-fit: cover;
-  margin-bottom:10px;
-  
-}
-.room-view3 {
-  width:14%;
-  object-fit: cover;
-  
-}
-
-
 .room-name {
   font-size: 24px;
   margin: 10px 0;

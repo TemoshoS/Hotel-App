@@ -32,11 +32,15 @@ const SearchForm = ({ onSearch }) => {
   useEffect(() => {
     setCheckInDate(getCurrentDate());
     setCheckOutDate(getCurrentDate());
+    
   }, []);
 
-  const handleSearch = () => {
-    onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });
-  };
+  // const numberOfDays = (startDate, endDate) => {
+  //   const startTimestamp = new Date(startDate).getTime();
+  //   const endTimestamp = new Date(endDate).getTime();
+  //   const oneDay = 24 * 60 * 60 * 1000; 
+  //   return Math.round(Math.abs((startTimestamp - endTimestamp) / oneDay));
+  // };
 
   const toggleGuestsDropdown = () => {
     setGuestsDropdownOpen(!isGuestsDropdownOpen);
@@ -50,6 +54,9 @@ const SearchForm = ({ onSearch }) => {
     setGuests(rooms + adults + children);
   };
 
+const handleSearch = () => {
+    onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });
+  };
   return (
     <div className='searchForm'>
       <label className='label' onClick={closeGuestsDropdown}>

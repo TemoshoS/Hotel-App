@@ -22,6 +22,7 @@ const SearchForm = ({ onSearch }) => {
     };
   
     useEffect(() => {
+        
       setCheckInDate(getCurrentDate());
       setCheckOutDate(getCurrentDate());
       
@@ -41,6 +42,21 @@ const SearchForm = ({ onSearch }) => {
     };
   
   const handleSearch = () => {
+
+    const selectedCheckInDate = new Date(checkInDate);
+    const selectedCheckOutDate = new Date(checkOutDate);
+
+    if(selectedCheckInDate < currentDate)
+    {
+        alert('Please selct a future date for check in.')
+        return;
+    }
+
+    if(selectedCheckOutDate <= selectedCheckInDate)
+    {
+        alert('Please select a valid check-out daate after the check-in date.')
+    }
+
       onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });
     };
     return (

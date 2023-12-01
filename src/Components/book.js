@@ -84,7 +84,7 @@ const Book = () => {
                                 <label>Guests</label><br></br>
                                 <input
                                     type="text"
-                                    value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
+                                    value={`Rooms: ${searchParams?.rooms || 0}, Adults: ${searchParams?.adults || 0}, Children: ${searchParams?.children || 0}`}
                                     readOnly
                                 /></div>
 

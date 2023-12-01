@@ -7,7 +7,7 @@ import ForgotPassword from './Components/forgotPassword';
 import Book from './Components/book';
 import ReserveSuccessful from './Components/reserveSuccessful';
 import HomePage from './Components/homePage';
-import BookingForm from './Components/bookingForm';
+
 
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -25,7 +25,7 @@ function App() {
         <Route path='/room' element={<Room/>}/>
         <Route path='/book/:itemId' element={<Book/>}/>
         <Route path='/successful' element={<ReserveSuccessful/>}/>
-        <Route path='/bookingform' element={<BookingForm/>}/>
+        
         
       </Routes>
       

@@ -331,6 +331,13 @@ body {
   object-fit: cover;
   
 }
+.room-user-card{
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  
+}
 .price-card{
   width: 100%;
   padding: 20px;
@@ -343,8 +350,9 @@ body {
 }
 
 .reserve-description {
-  font-size: 16px;
-  color: #555;
+  margin-top: 8px;
+  font-size: 1.3rem;
+  color: #777; 
 }
 .hotel-icons{
   display: flex;

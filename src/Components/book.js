@@ -14,6 +14,9 @@ const Book = () => {
     const navigate = useNavigate();
     const { itemId } = useParams();
     const [room, setRoom] = useState(null);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
 
 
     useEffect(() => {
@@ -69,7 +72,7 @@ const Book = () => {
 
                     <div>
 
-                        <div className='price-card'>
+                        <div className='room-user-card'>
                             <div className='input-container'>
                                 <label>Number of days</label><br></br>
                                 <input type="text" value={` ${9}`} readOnly /><br></br>
@@ -81,11 +84,41 @@ const Book = () => {
                                     value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
                                     readOnly
                                 /></div>
+
+                        </div>
+
+
+                        <div className='price-card'>
+                            <div className='input-container'>
+                                <label>Full Name</label><br></br>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                /><br></br>
+
+                                <label>Email</label><br></br>
+                                <input
+                                    type="text"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+
+                                />
+
+                                <label>Phone Number</label><br></br>
+                                <input
+                                    type="text"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+
+                                />
+                            </div>
+
                             <h3 className='roomPrice'>
                                 <span>Price: R{calculateTotalPrice()} </span>
 
                             </h3>< button className='reserve-button' onClick={bookRoom}>
-                                RESERVE
+                                PAY
                             </button>
                         </div>
                     </div>
@@ -101,35 +134,35 @@ const Book = () => {
                 <p className='reserve-description'>{room ? room.roomDescription : ''}</p>
                 <div className='hotel-icons'>
 
-                    
-                <div >
-                <FontAwesomeIcon icon={faCoffee} /> <span>Free breakfast</span>
-                </div>
 
-                <div>
-                <FontAwesomeIcon icon={faCar} /> <span>Free Parking</span>
-                </div>
+                    <div >
+                        <FontAwesomeIcon icon={faCoffee} /> <span>Free breakfast</span>
+                    </div>
 
-                <div>
-                <FontAwesomeIcon icon={faSwimmingPool} /> <span>Swimming pool</span>
-                </div>
+                    <div>
+                        <FontAwesomeIcon icon={faCar} /> <span>Free Parking</span>
+                    </div>
 
-                <div>
-                <FontAwesomeIcon icon={faWifi} /> <span>WiFi</span>
-                </div>
+                    <div>
+                        <FontAwesomeIcon icon={faSwimmingPool} /> <span>Swimming pool</span>
+                    </div>
 
-                <div>
-                <FontAwesomeIcon icon={faPlane} /> <span>Airport</span>
-                </div>
+                    <div>
+                        <FontAwesomeIcon icon={faWifi} /> <span>WiFi</span>
+                    </div>
 
-                <div>
-                <FontAwesomeIcon icon={faDumbbell} /> <span>Gym</span>
-                </div>
+                    <div>
+                        <FontAwesomeIcon icon={faPlane} /> <span>Airport</span>
+                    </div>
 
-                    
-                
-                
-                
+                    <div>
+                        <FontAwesomeIcon icon={faDumbbell} /> <span>Gym</span>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
 

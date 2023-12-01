@@ -5,6 +5,8 @@ import { bookHotel } from '../services/roomServices';
 import NavBar from './navBar';
 import Footer from './footer';
 import { fetchData } from '../services/apis';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faCar, faSwimmingPool, faWifi, faPlane, faDumbbell } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -33,12 +35,22 @@ const Book = () => {
 
 
 
+    const calculateTotalPrice = () => {
+        if (room) {
+            const totalPrice = 8 * room.roomPrice * 2;
+            console.log('Total Price:', totalPrice);
+            return totalPrice;
+        }
+        return 0;
+    };
+
+
 
     const bookRoom = async () => {
         try {
             const cartData = await bookHotel(itemId);
             setRoom(cartData);
-            navigate('/successful');
+            navigate('/bookingform');
         } catch (error) {
             console.log(error.message);
         }
@@ -56,16 +68,21 @@ const Book = () => {
                     </div>
 
                     <div>
-                       
+
                         <div className='price-card'>
-                        <input type="text" value={`Number of Days: ${9}`} readOnly />
-                        <input
-                            type="text"
-                            value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
-                            readOnly
-                        />
+                            <div className='input-container'>
+                                <label>Number of days</label><br></br>
+                                <input type="text" value={` ${9}`} readOnly /><br></br>
+
+
+                                <label>Number of rooms</label><br></br>
+                                <input
+                                    type="text"
+                                    value={`Rooms: ${2}, Adults: ${2}, Children: ${4}`}
+                                    readOnly
+                                /></div>
                             <h3 className='roomPrice'>
-                                <span>R {room ? room.roomPrice : ''}</span>
+                                <span>Price: R{calculateTotalPrice()} </span>
 
                             </h3>< button className='reserve-button' onClick={bookRoom}>
                                 RESERVE
@@ -82,8 +99,38 @@ const Book = () => {
                 <h2 className='room-name'>{room ? room.roomName : ''}</h2>
 
                 <p className='reserve-description'>{room ? room.roomDescription : ''}</p>
+                <div className='hotel-icons'>
 
+                    
+                <div >
+                <FontAwesomeIcon icon={faCoffee} /> <span>Free breakfast</span>
+                </div>
 
+                <div>
+                <FontAwesomeIcon icon={faCar} /> <span>Free Parking</span>
+                </div>
+
+                <div>
+                <FontAwesomeIcon icon={faSwimmingPool} /> <span>Swimming pool</span>
+                </div>
+
+                <div>
+                <FontAwesomeIcon icon={faWifi} /> <span>WiFi</span>
+                </div>
+
+                <div>
+                <FontAwesomeIcon icon={faPlane} /> <span>Airport</span>
+                </div>
+
+                <div>
+                <FontAwesomeIcon icon={faDumbbell} /> <span>Gym</span>
+                </div>
+
+                    
+                
+                
+                
+                </div>
             </div>
 
             <Footer />

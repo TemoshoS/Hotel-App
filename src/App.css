@@ -312,12 +312,12 @@ body {
 
 .reserve-card {
   
-  width: 80%;
+  width: 50%;
   border: 1px solid #ddd;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* transition: transform 0.3s ease-in-out; */
+  
 }
 
 .images-container{
@@ -333,9 +333,8 @@ body {
 }
 .price-card{
   width: 100%;
-  padding: 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 7px;
+  padding: 20px;
+  border: 1px solid #ddd;
   
 }
 .room-name {
@@ -347,9 +346,31 @@ body {
   font-size: 16px;
   color: #555;
 }
+.hotel-icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.input-container label {
+  font-weight: bold;
+}
+
+.input-container input {
+  width: 100%;
+
+  padding: 4px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  text-align: left;
+
+}
 
 .roomPrice {
-  font-size: 24px;
+  font-size: 18px;
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
@@ -362,10 +383,10 @@ body {
 }
 
 .reserve-button {
-  background-color: #3498db;
+  background-color: #ccc;
   color: #fff;
-  font-size: 18px;
-  padding: 10px 20px;
+  font-size: 12px;
+  padding: 8px 60px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -373,7 +394,9 @@ body {
 }
 
 .reserve-button:hover {
-  background-color: #2980b9;
+  background-color: #fff;
+  color: #ccc;
+  border: 1px solid #ccc;
 }
 
 /* Footer */

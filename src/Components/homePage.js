@@ -6,6 +6,7 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Footer from './footer';
 import SearchForm from './searchForm';
+import AuthService from '../services/authService'; 
 
 
 
@@ -25,6 +26,23 @@ const HomePage = () => {
         setRooms([]);
       }
     };
+
+    const fetchCurrentUser = async () => {
+      try {
+        const currentUser = await AuthService.getCurrentUser();
+        if (currentUser) {
+          // User is logged in
+          console.log(currentUser);
+        } else {
+          // User is not logged in
+          console.log('No user logged in');
+        }
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+
+    fetchCurrentUser();
 
     fetchRoomsData();
 

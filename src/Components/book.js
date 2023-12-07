@@ -4,7 +4,7 @@ import { fetchRoomDetails } from '../services/roomServices';
 import { bookHotel } from '../services/roomServices';
 import NavBar from './navBar';
 import Footer from './footer';
-
+import PaystackPop from '@paystack/inline-js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faCar, faSwimmingPool, faWifi, faPlane, faDumbbell, } from '@fortawesome/free-solid-svg-icons';
 import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
@@ -47,6 +47,31 @@ const Book = () => {
         }
         return 0;
     };
+
+    const paywithpaystack =(e)=>{
+        e.preventDefault();
+    
+        const paystack = new PaystackPop();
+        const calculatedAmount = calculateTotalPrice();
+    
+        paystack.newTransaction({
+          key:"pk_test_1614fb1b435881450bf82e4c90488b8143bed936",
+          amount: calculatedAmount * 100,
+          email:email,
+          name:name,
+          phoneNumber:phoneNumber,
+    
+          onSuccess(transaction){
+            let message = `Payment Complete! Reference ${transaction.reference}`
+            alert(message);
+            // After successful payment, call handleConfirm to save the order data
+          
+          },
+          onCancel(){
+            alert('you have canceled the transaction')
+          }
+        })
+      }
 
 
 
@@ -120,7 +145,7 @@ const Book = () => {
                             <h3 className='roomPrice'>
                                 <span>Price: R{calculateTotalPrice()} </span>
 
-                            </h3>< button className='reserve-button' onClick={bookRoom}>
+                            </h3>< button className='reserve-button' onClick={paywithpaystack}>
                                 PAY <FontAwesomeIcon icon={faCcVisa} size="2x" />
                             </button>
                         </div>

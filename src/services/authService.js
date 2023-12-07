@@ -1,29 +1,44 @@
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getAuth, createUserWithEmailAndPassword, updateProfile,signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
-const register= async (email, password, displayName, phoneNumber)=>{
-    try {
-        const auth = getAuth();
-        const {user} = await createUserWithEmailAndPassword(auth, email, password);
+const auth = getAuth();
 
-        await updateProfile(user, {displayName});
+const AuthService = {
+    register: async (email, password) => {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        return { user };
+      } catch (error) {
+        return { error };
+      }
+    },
+  
+    login: async (email, password) => {
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        return { user };
+      } catch (error) {
+        return { error };
+      }
+    },
 
-        const database = getDatabase();
-        const userRef = ref(database, `users/${user.uid}`);
-        await set(userRef,{
-            displayName,
-            phoneNumber,
+    getCurrentUser: () => {
+        return new Promise((resolve, reject) => {
+          const unsubscribe = onAuthStateChanged(auth, (user) => {
+            unsubscribe(); 
+            resolve(user);
+          }, (error) => {
+            reject(error);
+          });
         });
-        console.log('User registerd successfully:', user);
-        
-    } catch (error) {
-
-        console.log('Error registering user:', error.message);
-        
-        
-    }
-
-}
+      },
+  
+    
+  
+  };
 
 
-export {register}
+
+
+  export default AuthService;

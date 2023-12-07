@@ -21,8 +21,6 @@ function App() {
         <Route  path='/sign' element={<Signin/>}/>
         <Route path='/register' element={<Singup/>}/>
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
-        <Route  path='/home' element={<Home/>}/>
-        <Route path='/room' element={<Room/>}/>
         <Route path='/book/:itemId' element={<Book/>}/>
         <Route path='/successful' element={<ReserveSuccessful/>}/>
         

@@ -1,44 +1,79 @@
 import React, { useState } from 'react';
-import { register } from '../services/authService';
 import authimage from '../images/hotels.jpg';
 import { Link, useNavigate } from 'react-router-dom';
+import {getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const Signup = () => {
+const Signup = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [passwordStrength, setPasswordStrength] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async () => {
+    const auth = getAuth();
     try {
-      if (!name || !email || !phone || !password) {
-        setError('All fields are required');
+      if (!name || !email || !password || !phone) {
+        alert('Please fill in all the required fields.');
         return;
-      } else {
-        setError(null);
       }
-  
-      await register(email, password, name, phone);
-      
-      // Display success message only if there is no error
-      alert('User registered successfully');
-      navigate('/sign');
+
+      if (password.length < 7) {
+        alert('Password must be at least 7 characters long.');
+        return;
+      }
+
+      if (password !== passwordConfirm) {
+        alert('Password and password confirmation do not match.');
+        return;
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      await updateProfile(userCredential.user, {
+        displayName: name,
+        phoneNumber: phone,
+      });
+
+      alert('user registerd succesfully');
+      navigate('/sign')
+
+   
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
-        setError('Email address is already in use. Please choose a different one.');
+        alert('Email is already in use. Please use a different email.');
       } else {
-        setError('An error occurred during registration. Please try again.');
+        alert('Registration failed: ' + error.message);
       }
     }
   };
-  
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+
+    const strength = checkPasswordStrength(newPassword);
+    setPasswordStrength(strength);
+  };
+
+  const checkPasswordStrength = (password) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$/;
+
+    if (passwordRegex.test(password)) {
+      return '✅';
+    } else {
+      return 'Weak Password';
+    }
+  };
   return (
     <div
      
@@ -77,16 +112,40 @@ const Signup = () => {
         </div>
 
         <div className='input-container'>
-          
+         
           <div className='password-input-container'>
-            <input placeholder='password'
-              onChange={(e) => setPassword(e.target.value)}
+            <input
+              onChange={handlePasswordChange}
               type={showPassword ? 'text' : 'password'}
             />
             <i
-              className={`password-toggle-icon ${showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
+              className={`password-toggle-icon ${showPassword ? 'eye-slash' : 'eye'}`}
               onClick={togglePasswordVisibility}
-            ></i>
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </i>
+          </div>
+          <div className='password-strength'>
+            {passwordStrength === '✅' ? (
+              <span style={{ color: 'green' }}>{passwordStrength}</span>
+            ) : (
+              <span className='weak-password'>{passwordStrength}</span>
+            )}
+          </div>
+        </div>
+        <div className='input-container'>
+          
+          <div className='password-input-container'>
+            <input
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              type={showPassword ? 'text' : 'password'}
+            />
+            <i
+              className={`password-toggle-icon ${showPassword ? 'eye-slash' : 'eye'}`}
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </i>
           </div>
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}

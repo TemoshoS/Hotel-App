@@ -1,26 +1,43 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import AuthService from '../services/authService'; 
 import authimage from '../images/hotels.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [userError, setUserError] = useState(null);
+  const [passError, setPassError] = useState(null);
+  const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const login = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/home');
-    } catch (error) {
-      console.error(error.message);
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError('Please fill in all the required fields.');
+      return;
+    }
+
+    const { user, error } = await AuthService.login(email, password);
+
+    if (user) {
+      setUserError(null);
+      navigate('/');
+    } else {
+      if (error.code === 'auth/user-not-found') {
+        setUserError('User does not exist.');
+      } else if (error.code === 'auth/wrong-password') {
+        setPassError('Wrong password.');
+      } else {
+        setError(error.message);
+      }
     }
   };
+
+ 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -63,7 +80,7 @@ const Signin = () => {
         <div className="input-container">
           <label>
             <Link
-              to="forgotpassword"
+              to="/forgotpassword"
               style={{ color: 'black'}}
             >
               Forgot password
@@ -71,7 +88,7 @@ const Signin = () => {
           </label>
         </div>
 
-        <button className="submit-button" onClick={login}>
+        <button className="submit-button" onClick={handleLogin}>
           Login
         </button>
 

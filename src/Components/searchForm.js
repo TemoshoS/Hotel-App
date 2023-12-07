@@ -45,7 +45,8 @@ const SearchForm = ({ onSearch }) => {
 
     const selectedCheckInDate = new Date(checkInDate);
     const selectedCheckOutDate = new Date(checkOutDate);
-
+    const currentDate = new Date();
+    
     if(selectedCheckInDate < currentDate)
     {
         alert('Please selct a future date for check in.')
@@ -54,7 +55,8 @@ const SearchForm = ({ onSearch }) => {
 
     if(selectedCheckOutDate <= selectedCheckInDate)
     {
-        alert('Please select a valid check-out daate after the check-in date.')
+        alert('Please select a valid check-out daate after the check-in date.');
+        return;
     }
 
       onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });

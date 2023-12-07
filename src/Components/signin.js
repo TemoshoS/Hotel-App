@@ -2,81 +2,85 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase';
-import authimage from '../images/login.jpg'
+import authimage from '../images/hotels.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 
 const Signin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const naviagte = useNavigate();
-    const [showPassword, setShowPassword] = useState(false)
+  const login = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/home');
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
-    const login = () => {
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-        signInWithEmailAndPassword(auth, email, password).then(() => {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${authimage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div className="auth">
+        <p className="heading">Login</p>
 
-           
-            naviagte('/home');
-
-        }).catch((error) => {
-            console.log(error.message);
-
-        })
-
-
-    };
-
-
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-
-    return (
-        <div className='auth-card'>
-
-            <div className='auth'>
-                <p className="heading">Sign In</p>
-
-                <div className='input-container'>
-                    <label>email</label>
-                    <input type='text' onChange={(event) => setEmail(event.target.value)} />
-                </div>
-
-                <div className='input-container'>
-                    <label>Password</label>
-                    <div className='password-input-container'>
-                        <input
-                            onChange={(e) => setPassword(e.target.value)}
-                            type={showPassword ? 'text' : 'password'}
-                        />
-                        <i
-                            className={`password-toggle-icon ${showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}`}
-                            onClick={togglePasswordVisibility}
-                        ></i>
-
-                    </div>
-                </div>
-
-
-                <div className='input-container'>
-                    <label>
-                        <input type="checkbox" className='rememberme' />
-                        Remeber me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to='forgotpassword' style={{ color: 'red', textDecoration: 'none' }}>forgot password</Link>
-
-                    </label>
-                </div>
-
-                <button className='submit-button' onClick={login}>Login</button>
-
-                <p style={{ marginLeft: '80px' }}>Don't have an account ? <Link to='/register' style={{ color: 'red', textDecoration: 'none' }}>Sign up</Link></p>
-
-            </div>
-
-            <img src={authimage} className='login-image' />
-
+        <div className="input-container">
+          
+          <div className="input-field-container">
+            <input placeholder='Email' type="text" onChange={(event) => setEmail(event.target.value)} />
+          </div>
         </div>
-    )
-}
 
+        <div className="input-container">
+          
+          <div className="password-input-container">
+            <input placeholder='Password' onChange={(e) => setPassword(e.target.value)} type={showPassword ? 'text' : 'password'} />
+            <FontAwesomeIcon
+              icon={showPassword ? faEyeSlash : faEye}
+              className="password-toggle-icon"
+              onClick={togglePasswordVisibility}
+            />
+          </div>
+        </div>
+
+        <div className="input-container">
+          <label>
+            <Link
+              to="forgotpassword"
+              style={{ color: 'black'}}
+            >
+              Forgot password
+            </Link>
+          </label>
+        </div>
+
+        <button className="submit-button" onClick={login}>
+          Login
+        </button>
+
+        <p style={{ marginLeft: '80px' }}>
+          Don't have an account? <Link to="/register" style={{ color: 'red', textDecoration: 'none' }}>Sign up</Link>
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default Signin;

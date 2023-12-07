@@ -4,7 +4,7 @@ import { fetchRoomDetails } from '../services/roomServices';
 import { bookHotel } from '../services/roomServices';
 import NavBar from './navBar';
 import Footer from './footer';
-import { fetchData } from '../services/apis';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faCar, faSwimmingPool, faWifi, faPlane, faDumbbell, } from '@fortawesome/free-solid-svg-icons';
 import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
@@ -33,7 +33,7 @@ const Book = () => {
         };
 
         fetchRoom();
-        fetchData();
+        
 
     }, [itemId]);
 

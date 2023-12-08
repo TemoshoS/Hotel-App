@@ -122,7 +122,7 @@ const HomePage = () => {
 
 
   return (
-    <div style={{marginTop:"99.3px"}}>
+    <div style={{marginTop:'100px'}}>
 
           <NavBar />
          

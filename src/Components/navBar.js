@@ -1,33 +1,62 @@
-import React, { useState } from 'react';
-import logo from '../images/Temoshoroyal.jpg';
-import { Link } from 'react-router-dom';
 
-const NavBar = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthService from '../services/authService';
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
+
+function Navigation() {
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoggedInStatus = async () => {
+      const user = await AuthService.getCurrentUser();
+      setLoggedIn(!!user);
+    };
+
+    checkLoggedInStatus();
+  }, []);
+
+  const handleLogout = async () => {
+    await AuthService.logout();
+    setLoggedIn(false);
+
+    navigate('/');
   };
 
   return (
-    <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
-      <div >
-            <Link to="/">
-              <img src={logo} alt="Logo"  className="navbar-logo" />
-            </Link>
-          </div>
-      <div className='navbar-links'>Links</div>
-      <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
-        <a href='#'>Home</a>
-        <a href='#'>About</a>
-        <a href='#'>Rooms</a>
-        <a href='#'>Contact</a>
-      </div>
-      <div className='menu-toggle' onClick={toggleMenu}>
-        
-      </div>
+    <nav className='navbar'>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/services">Services</a>
+        </li>
+        {loggedIn ? (
+          <>
+            <li>
+              <a href="/profile">Profile</a>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <a href="/sign">Login</a>
+            </li>
+            <li>
+              <a href="/register">Register</a>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
-};
+}
 
-export default NavBar;
+export default Navigation;

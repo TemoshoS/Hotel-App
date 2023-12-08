@@ -1,13 +1,11 @@
 import './App.css';
 import Signin from './Components/signin';
 import Singup from './Components/signup';
-import Home from './Components/home'
-import Room from './Components/rooms';
 import ForgotPassword from './Components/forgotPassword';
 import Book from './Components/book';
-import ReserveSuccessful from './Components/reserveSuccessful';
 import HomePage from './Components/homePage';
-
+import Profile from './Components/profile';
+import Services from './Components/services';
 
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -22,7 +20,8 @@ function App() {
         <Route path='/register' element={<Singup/>}/>
         <Route path='/forgotpassword' element={<ForgotPassword/>}/>
         <Route path='/book/:itemId' element={<Book/>}/>
-        <Route path='/successful' element={<ReserveSuccessful/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/services' element={<Services/>}/>
         
         
       </Routes>

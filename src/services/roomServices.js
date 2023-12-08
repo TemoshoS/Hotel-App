@@ -1,4 +1,4 @@
-import { collection, getDocs,doc, getDoc, addDoc } from 'firebase/firestore';
+import { collection, getDocs,doc, getDoc, addDoc, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
 const getRooms = async () => {
@@ -26,18 +26,56 @@ const fetchRoomDetails = async (itemId) => {
   }
 };
 
-    
-const bookHotel=async ()=>{
-  try{
-    const cartRef = doc(db, 'cart');
-    const cartSnapshot = await getDoc(cartRef);
-    return { id: cartSnapshot.id, ...cartSnapshot.data() };
-  } catch (error) {
-    console.log(error.message);
-    return null;
-  }
   
-};   
+const bookHotel = async (roomId, userData, checkInDate, checkOutDate, phoneNumber, guests) => {
+  try {
+    
+    if (typeof phoneNumber !== 'string') {
+      throw new Error('Invalid phone number format.');
+    }
+
+    const bookingsCollectionRef = collection(db, 'bookings');
+
+    const newBookingDocRef = await addDoc(bookingsCollectionRef, {
+      roomId: roomId,
+      userId: userData.uid,
+      name: userData.displayName || '',
+      email: userData.email || '',
+      phoneNumber: phoneNumber, 
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      guests: {
+        rooms: guests.rooms || 0,
+        adults: guests.adults || 0,
+        children: guests.children || 0,
+      },
+    });
+
+    return { id: newBookingDocRef.id, ...userData };
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
+
+const getUserBookings = async (userId) => {
+  try {
+    const bookingsQuery = query(
+      collection(db, 'bookings'),
+      where('userId', '==', userId)
+    );
+    const bookingsSnapshot = await getDocs(bookingsQuery);
+    const bookingsData = bookingsSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return bookingsData;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
 
 
-export { getRooms, fetchRoomDetails ,bookHotel};
+
+export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings};

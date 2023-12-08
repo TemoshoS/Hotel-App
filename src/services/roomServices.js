@@ -27,7 +27,7 @@ const fetchRoomDetails = async (itemId) => {
 };
 
   
-const bookHotel = async (roomId, userData, checkInDate, checkOutDate, phoneNumber, guests) => {
+const bookHotel = async (roomId, roomName,userData, checkInDate, checkOutDate, phoneNumber, guests) => {
   try {
     
     if (typeof phoneNumber !== 'string') {
@@ -38,6 +38,7 @@ const bookHotel = async (roomId, userData, checkInDate, checkOutDate, phoneNumbe
 
     const newBookingDocRef = await addDoc(bookingsCollectionRef, {
       roomId: roomId,
+      roomName: roomName, 
       userId: userData.uid,
       name: userData.displayName || '',
       email: userData.email || '',

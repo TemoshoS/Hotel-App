@@ -3,10 +3,7 @@
   padding: 0;
 }
 
-body {
-  background-color: snow;
-  /* margin-top: 100px; */
-}
+
 
 
 .fa-eye:before {
@@ -133,7 +130,7 @@ a {
 }
 
 button {
-  background-color: #c0392b;
+  background-color: #ccc;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -142,7 +139,7 @@ button {
 }
 
 button:hover {
-  background-color: #a5281a;
+  background-color: #ccc;
 }
 
 
@@ -511,6 +508,58 @@ button:hover {
 .copyright {
   margin-top: 20px;
 }
+
+/* Profile.css */
+
+.profile-container {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.booking-history-controls {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.booking-history {
+  text-align: center;
+}
+
+.booking-history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.booking-history th, .booking-history td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.booking-history th {
+  background-color: #f2f2f2;
+}
+
+.booking-item ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.booking-item strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.booking-item hr {
+  margin-top: 10px;
+  border: 0.5px solid #ddd;
+}
+
 
 
 /* Styles for smaller screens */

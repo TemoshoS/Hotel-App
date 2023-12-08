@@ -115,6 +115,7 @@ const Book = () => {
             
             const bookingData = await bookHotel(
                 itemId,
+                room.roomName, 
                 currentUser,
                 searchParams.checkInDate,
                 searchParams.checkOutDate,
@@ -128,6 +129,7 @@ const Book = () => {
     
             
             alert('Room is successfully booked!\nDetails:\n' +
+                `Room: ${room.roomName}\n` +
                 `Check-in: ${searchParams.checkInDate}\n` +
                 `Check-out: ${searchParams.checkOutDate}\n` +
                 `Rooms: ${searchParams.rooms}\n` +

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getRooms, addHotel, deleteHotel} from '../../services/roomServices';
 import Modal from 'react-modal';
 
-
+Modal.setAppElement('#root');
 
 
 function Hotels() {

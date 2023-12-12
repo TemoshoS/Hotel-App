@@ -90,15 +90,14 @@ const addHotel = async (formData) => {
     const imageRef = ref(storage, `roomImages/${formData.image.name}`);
     await uploadBytes(imageRef, formData.image);
 
-    // download URL of the uploaded image
     const imageUrl = await getDownloadURL(imageRef);
 
-    // Add Hotel Details to Firestore 
+    
     const hotelsCollectionRef = collection(db, 'rooms');
     await addDoc(hotelsCollectionRef, {
       ...formData,
-      roomImage: imageUrl, // Add the imageUrl to the hotel data
-      
+      roomImage: imageUrl, 
+      image: null, 
     });
 
     console.log('Hotel added successfully.');
@@ -107,7 +106,6 @@ const addHotel = async (formData) => {
     throw error;
   }
 };
-
 const deleteHotel = async (hotelId) => {
   try {
     const hotelRef = doc(db, 'rooms', hotelId);

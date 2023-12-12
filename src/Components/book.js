@@ -23,6 +23,9 @@ const Book = () => {
 
     const searchParams = useLocation().state?.searchParams;
 
+
+    
+
     useEffect(() => {
 
         const fetchRoom = async () => {

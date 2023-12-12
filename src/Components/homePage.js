@@ -50,9 +50,29 @@ const HomePage = () => {
   }, []);
 
   const handleSearch = (searchParams) => {
+    const { checkInDate, checkOutDate } = searchParams;
+
+    if (!checkInDate || !checkOutDate) {
+      alert('Please select both check-in and check-out dates before making a booking.');
+      return;
+    }
+
+    const checkInDateObj = new Date(checkInDate);
+    const checkOutDateObj = new Date(checkOutDate);
+
+    if (isNaN(checkInDateObj.getTime()) || isNaN(checkOutDateObj.getTime())) {
+      alert('Please enter valid check-in and check-out dates.');
+      return;
+    }
+
+    if (checkInDateObj >= checkOutDateObj) {
+      alert('Check-out date must be after check-in date.');
+      return;
+    }
+
     setSearchParams(searchParams);
     console.log('Search Parameters:', searchParams);
-  };
+  }; 
 
   const gotoBookings = (itemId) => {
     navigate(`/book/${itemId}`,{state: {searchParams}});

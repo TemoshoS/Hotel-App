@@ -1,5 +1,10 @@
-import { collection, getDocs,doc, getDoc, addDoc, query, where } from 'firebase/firestore';
+import { collection, getDocs,doc, getDoc,deleteDoc, addDoc, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
+
+const storage = getStorage();
+
 
 const getRooms = async () => {
   try {
@@ -77,6 +82,43 @@ const getUserBookings = async (userId) => {
   }
 };
 
+// Admin functions
+
+const addHotel = async (formData) => {
+  try {
+    // Upload Image to Firebase Storage
+    const imageRef = ref(storage, `roomImages/${formData.image.name}`);
+    await uploadBytes(imageRef, formData.image);
+
+    // download URL of the uploaded image
+    const imageUrl = await getDownloadURL(imageRef);
+
+    // Add Hotel Details to Firestore 
+    const hotelsCollectionRef = collection(db, 'rooms');
+    await addDoc(hotelsCollectionRef, {
+      ...formData,
+      roomImage: imageUrl, // Add the imageUrl to the hotel data
+      
+    });
+
+    console.log('Hotel added successfully.');
+  } catch (error) {
+    console.error('Error adding hotel:', error.message);
+    throw error;
+  }
+};
+
+const deleteHotel = async (hotelId) => {
+  try {
+    const hotelRef = doc(db, 'rooms', hotelId);
+    await deleteDoc(hotelRef);
+    console.log('Hotel deleted successfully.');
+  } catch (error) {
+    console.error('Error deleting hotel:', error.message);
+    throw error;
+  }
+};
 
 
-export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings};
+
+export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings, addHotel, deleteHotel};

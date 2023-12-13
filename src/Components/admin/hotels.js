@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getRooms, addHotel, deleteHotel} from '../../services/roomServices';
+import { getRooms, addHotel, deleteHotel,updateHotel } from '../../services/roomServices';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -7,15 +7,20 @@ Modal.setAppElement('#root');
 
 function Hotels() {
   const [hotels, setHotels] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
+  const [updateModalIsOpen, setUpdateModalIsOpen] = useState(false);
+  const [viewModalIsOpen, setViewModalIsOpen] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [formData, setFormData] = useState({
+    id: '',
     image: '',
     roomName: '',
     roomDescription: '',
     roomPrice: '',
-    checkInDate:'',
-    checkOutDate:'',
+    checkInDate: '',
+    checkOutDate: '',
   });
+
 
   useEffect(() => {
     const fetchHotels = async () => {
@@ -31,26 +36,27 @@ function Hotels() {
     fetchHotels();
   }, []);
 
-  const handleAdd = async () => {
+   const handleAdd = async () => {
     try {
-    
       const newHotelId = await addHotel(formData);
-
-      
-      setIsOpen(false);
-      setHotels(await getRooms()); 
+      setAddModalIsOpen(false);
+      setHotels(await getRooms());
     } catch (error) {
       console.error('Error adding hotel:', error.message);
     }
   };
 
   const handleChange = (e) => {
-   
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleView = () => {
-    
+  const handleView = (room) => {
+    setSelectedRoom(room);
+    setViewModalIsOpen(true);
+  };
+
+  const closeViewModal = () => {
+    setViewModalIsOpen(false);
   };
 
   const handleDelete = async (hotelId) => {
@@ -62,9 +68,54 @@ function Hotels() {
     }
   };
 
-  const handleUpdate = () => {
-    
+
+  const handleUpdate = (roomId) => {
+    const room = hotels.find((r) => r.id === roomId);
+    if (room) {
+      setSelectedRoom(room);
+      
+      setFormData({
+        id: room.id,
+        roomName: room.roomName,
+        roomDescription: room.roomDescription,
+        roomPrice: room.roomPrice,
+        checkInDate: room.checkInDate,
+        checkOutDate: room.checkOutDate,
+      });
+      setUpdateModalIsOpen(true);
+    } else {
+      console.error('Invalid room selected for update.');
+    }
   };
+  
+  
+  
+
+  const performUpdate = async () => {
+    try {
+      if (!selectedRoom || !selectedRoom.id) {
+        console.error('Invalid room selected for update. selectedRoom:', selectedRoom);
+        return;
+      }
+  
+      if (!formData) {
+        console.error('Invalid formData for update. formData:', formData);
+        return;
+      }
+  
+      await updateHotel(selectedRoom.id, formData);
+      setUpdateModalIsOpen(false);
+      setHotels(await getRooms());
+    } catch (error) {
+      console.error('Error updating hotel:', error.message);
+    }
+  };
+  
+  
+
+  
+  
+
 
   const customStyles = {
     content: {
@@ -74,28 +125,35 @@ function Hotels() {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      
     },
   };
 
   return (
     <div>
-          <button onClick={() => setIsOpen(true)}>Add Hotel</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setIsOpen(false)}
+      <button onClick={() => setAddModalIsOpen(true)}>Add Hotel</button>
+     <Modal
+        isOpen={addModalIsOpen}
+        onRequestClose={() => setAddModalIsOpen(false)}
         style={customStyles}
+        overlayClassName="modal-overlay"
         contentLabel="Add Hotel Modal"
       >
-        <h2>Add Hotel</h2>
-        <form>
-        <label>
-  Image:
-  <input
-    type="file"
-    accept="image/*"
-    onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
-  />
-</label>
+        <div className="modal-header">
+          <h2 className="modal-title">{formData.id ? 'Update Hotel' : 'Add Hotel'}</h2>
+          <button className="modal-close-btn" onClick={() => setAddModalIsOpen(false)}>
+            Close
+          </button>
+        </div>
+        <form className="modal-form">
+          <label>
+            Image:
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+            />
+          </label>
 
           <label>
             Room Name:
@@ -123,11 +181,86 @@ function Hotels() {
               onChange={handleChange}
             />
           </label>
-          <button type="button" onClick={handleAdd}>
-            Add
+          <button type="button" onClick={formData.id ? handleUpdate : handleAdd}>
+            {formData.id ? 'Update' : 'Add'} Hotel
           </button>
         </form>
       </Modal>
+
+       {/* View Room Details Modal */}
+       <Modal
+        isOpen={viewModalIsOpen}
+        onRequestClose={closeViewModal}
+        style={customStyles}
+        overlayClassName="modal-overlay"
+        contentLabel="View Room Details Modal"
+      >
+        <div className="modal-header">
+          <h2 className="modal-title">Room Details</h2>
+          <button className="modal-close-btn" onClick={closeViewModal}>
+            Close
+          </button>
+        </div>
+        <div className="modal-content">
+          <img src={selectedRoom?.roomImage} alt="Room" className="room-image" />
+          <p>Room Name: {selectedRoom?.roomName}</p>
+          <p>Description: {selectedRoom?.roomDescription}</p>
+          <p>Price: {selectedRoom?.roomPrice}</p>
+          
+        </div>
+      </Modal>
+
+        <Modal
+        isOpen={updateModalIsOpen}
+        onRequestClose={() => setUpdateModalIsOpen(false)}
+        style={customStyles}
+        overlayClassName="modal-overlay"
+        contentLabel="Update Hotel Modal"
+      >
+        <div className="modal-header">
+          <h2 className="modal-title">Update Hotel</h2>
+          <button className="modal-close-btn" onClick={() => setUpdateModalIsOpen(false)}>
+            Close
+          </button>
+        </div>
+        <form className="modal-form">
+        
+          
+          <label>
+            New Room Name:
+            <input
+              type="text"
+              name="roomName"
+              value={formData.roomName}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            New Description:
+            <textarea
+              name="roomDescription"
+              value={formData.roomDescription}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            New Price:
+            <input
+              type="text"
+              name="roomPrice"
+              value={formData.roomPrice}
+              onChange={handleChange}
+            />
+          </label>
+
+          
+          <button type="button" onClick={performUpdate}>
+            Update Hotel
+          </button>
+        </form>
+      </Modal>
+
+{/* TABLE */}
 
       <table className="hotel-table">
         <thead>
@@ -150,7 +283,7 @@ function Hotels() {
               <td>{room.roomPrice}</td>
               <td>
                 <button onClick={() => handleView(room)}>View</button>
-                <button onClick={() => handleUpdate(room)}>Update</button>
+                <button onClick={() => handleUpdate(room.id)}>Update</button>
                 <button onClick={() => handleDelete(room.id)}>Delete</button>
               </td>
             </tr>

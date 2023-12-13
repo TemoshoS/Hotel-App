@@ -627,6 +627,47 @@ button:hover {
   margin: 0 auto;
 }
 
+/* Hotels.css */
+
+.modal-content {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.modal-form button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-form button:hover {
+  background-color: #45a049;
+}
+
+/* Add any additional styles as needed */
 
 
 

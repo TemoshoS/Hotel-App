@@ -1,4 +1,4 @@
-import { collection, getDocs,doc, getDoc,deleteDoc, addDoc, query, where } from 'firebase/firestore';
+import { collection, getDocs,doc, getDoc,deleteDoc, addDoc,updateDoc , query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -92,13 +92,17 @@ const addHotel = async (formData) => {
 
     const imageUrl = await getDownloadURL(imageRef);
 
-    
     const hotelsCollectionRef = collection(db, 'rooms');
-    await addDoc(hotelsCollectionRef, {
+
+    // Add the document to Firestore and get the document reference
+    const newHotelRef = await addDoc(hotelsCollectionRef, {
       ...formData,
-      roomImage: imageUrl, 
-      image: null, 
+      roomImage: imageUrl,
+      image: null,
     });
+
+    // Update the document with its ID as a field
+    await updateDoc(newHotelRef, { id: newHotelRef.id });
 
     console.log('Hotel added successfully.');
   } catch (error) {
@@ -106,6 +110,7 @@ const addHotel = async (formData) => {
     throw error;
   }
 };
+
 const deleteHotel = async (hotelId) => {
   try {
     const hotelRef = doc(db, 'rooms', hotelId);
@@ -119,4 +124,40 @@ const deleteHotel = async (hotelId) => {
 
 
 
-export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings, addHotel, deleteHotel};
+
+const updateHotel = async (hotelId, formData) => {
+  try {
+    const hotelRef = doc(db, 'rooms', hotelId);
+
+    // Check if a new image is provided
+    if (formData.image) {
+      // Upload the new image to Firebase Storage
+      const newImageRef = ref(storage, `roomImages/${formData.image.name}`);
+      await uploadBytes(newImageRef, formData.image);
+
+      const newImageUrl = await getDownloadURL(newImageRef);
+
+      // Update the image URL in the database
+      await updateDoc(hotelRef, {
+        ...formData,
+        roomImage: newImageUrl,
+        image: null, // Set image to null to avoid updating it again in the next step
+      });
+    } else {
+      // Update only textual information without changing the image
+      await updateDoc(hotelRef, {
+        ...formData,
+        image: null, // Set image to null to avoid updating it
+      });
+    }
+
+    console.log('Hotel updated successfully.');
+  } catch (error) {
+    console.error('Error updating hotel:', error.message);
+    throw error;
+  }
+};
+
+
+
+export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings, addHotel, deleteHotel, updateHotel} ;

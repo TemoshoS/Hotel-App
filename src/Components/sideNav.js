@@ -12,10 +12,24 @@ import {
   FaSignOutAlt,
   FaMoneyBill,
 } from 'react-icons/fa';
-import { IoMdTime } from 'react-icons/io';
+
+import AuthService from '../services/authService'; 
+import {useNavigate } from 'react-router-dom';
 
 
 function SideNav() {
+  const naviagation = useNavigate();
+  const signOut = async()=>{
+    const isOut = await AuthService.logout();
+
+    if (isOut) {
+      alert('suces');
+      naviagation('/sign');
+      
+    } else {
+      
+    }
+  }
   return (
     <div className="sidenav-container">
       <CDBSidebar textColor="#333" backgroundColor="#ccc">
@@ -35,7 +49,7 @@ function SideNav() {
           <NavLink to="/bookings" className="sidebar-link" activeClassName="active">
             <FaCheckCircle /> bookings
           </NavLink>
-          <NavLink to="/logout" className="sidebar-link" activeClassName="active">
+          <NavLink to="/sign" className="sidebar-link" activeClassName="active">
             <FaSignOutAlt /> Logout
           </NavLink>
         </CDBSidebarContent>

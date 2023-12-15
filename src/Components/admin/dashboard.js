@@ -1,58 +1,102 @@
-import React from 'react';
-import { Line, Bar } from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
+import { getBookings } from '../../services/roomServices';
+import Chart from 'chart.js/auto';
 
 function Dashboard() {
- 
-  const lineChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
-    datasets: [
-      {
-        label: 'Line Chart',
-        data: [12, 19, 3, 5, 2, 3],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
-      },
-    ],
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    const fetchAllBookings = async () => {
+      try {
+        const allBookings = await getBookings();
+        setBookings(allBookings);
+      } catch (error) {
+        console.error('Error fetching bookings:', error.message);
+      }
+    };
+
+    fetchAllBookings();
+  }, []);
+
+  const getStatus = (checkInDate, checkOutDate) => {
+    const currentDate = new Date();
+
+    if (currentDate < new Date(checkInDate)) {
+      return 'Active';
+    } else if (currentDate >= new Date(checkInDate) && currentDate <= new Date(checkOutDate)) {
+      return 'Active';
+    } else {
+      return 'Past';
+    }
   };
 
-  const barChartData = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-      {
-        label: 'Bar Chart',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  // Calculate the total, active, and past bookings
+  const totalBookings = bookings.length;
+  const activeBookings = bookings.filter(
+    (booking) => getStatus(booking.checkInDate, booking.checkOutDate) === 'Active'
+  ).length;
+  const pastBookings = bookings.filter(
+    (booking) => getStatus(booking.checkInDate, booking.checkOutDate) === 'Past'
+  ).length;
 
   return (
     <div>
-      <div>
-        <h2>Line Chart</h2>
-        <Line data={lineChartData} />
+      {/* Display small cards for total, active, and past bookings in a row */}
+      <div className="d-flex flex-row">
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Total Bookings</h6>
+            <h5 className="card-title">{totalBookings}</h5>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Active Bookings</h6>
+            <h5 className="card-title">{activeBookings}</h5>
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-body">
+            <h6 className="card-subtitle mb-2 text-muted">Past Bookings</h6>
+            <h5 className="card-title">{pastBookings}</h5>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2>Bar Chart</h2>
-        <Bar data={barChartData} />
-      </div>
+
+      {bookings.length === 0 ? (
+        <p>No bookings found.</p>
+      ) : (
+        <>
+          <div className="card custom-card-width">
+            <div className="card-body">
+              <h5 className="card-title">Booking Details</h5>
+              <div className="table-responsive">
+                {/* Table for booking details */}
+                <table className="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Room Name</th>
+                      <th>Check-In Date</th>
+                      <th>Check-Out Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bookings.map((booking) => (
+                      <tr key={booking.id}>
+                        <td>{booking.roomName}</td>
+                        <td>{booking.checkInDate}</td>
+                        <td>{booking.checkOutDate}</td>
+                        <td>{getStatus(booking.checkInDate, booking.checkOutDate)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

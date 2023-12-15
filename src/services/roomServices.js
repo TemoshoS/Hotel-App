@@ -159,5 +159,21 @@ const updateHotel = async (hotelId, formData) => {
 };
 
 
+const getBookings = async () => {
+  try {
+    
 
-export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings, addHotel, deleteHotel, updateHotel} ;
+    const querySnapShot = await getDocs(collection(db, 'bookings'));
+    const bookingsData = querySnapShot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    
+    return bookingsData;
+  } catch (error) {
+    console.error('Error fetching bookings:', error.message);
+    throw error;
+  }
+};
+
+export { getRooms, fetchRoomDetails ,bookHotel,getUserBookings, addHotel, deleteHotel, updateHotel, getBookings} ;

@@ -627,15 +627,43 @@ button:hover {
   margin: 0 auto;
 }
 
+
+.button-container {
+  display: flex;
+  gap: 8px; 
+}
+
+.view-button,
+.update-button,
+.delete-button {
+  padding: 4px 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  font-size: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-button:hover {
+  background-color: green;
+}
+
+.update-button:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: red;
+  color: #fff;
+}
+
+
 /* Hotels.css */
 
-.modal-content {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 0 auto;
-}
+
 
 .modal-title {
   font-size: 1.5rem;
@@ -655,7 +683,7 @@ button:hover {
 }
 
 .modal-form button {
-  background-color: #4caf50;
+  background-color: #ccc;
   color: #fff;
   padding: 10px 15px;
   border: none;
@@ -664,10 +692,16 @@ button:hover {
 }
 
 .modal-form button:hover {
-  background-color: #45a049;
+  background-color: #fff;
+  color:#ccc;
+  border: 1px solid #ccc;
 }
 
-/* Add any additional styles as needed */
+/* table admin */
+.custom-card-width {
+  max-width: 800px; 
+  margin: auto; 
+}
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getRooms, addHotel, deleteHotel,updateHotel } from '../../services/roomServices';
+import { getRooms, addHotel, deleteHotel, updateHotel } from '../../services/roomServices';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -36,7 +36,7 @@ function Hotels() {
     fetchHotels();
   }, []);
 
-   const handleAdd = async () => {
+  const handleAdd = async () => {
     try {
       const newHotelId = await addHotel(formData);
       setAddModalIsOpen(false);
@@ -73,7 +73,7 @@ function Hotels() {
     const room = hotels.find((r) => r.id === roomId);
     if (room) {
       setSelectedRoom(room);
-      
+
       setFormData({
         id: room.id,
         roomName: room.roomName,
@@ -87,9 +87,9 @@ function Hotels() {
       console.error('Invalid room selected for update.');
     }
   };
-  
-  
-  
+
+
+
 
   const performUpdate = async () => {
     try {
@@ -97,12 +97,12 @@ function Hotels() {
         console.error('Invalid room selected for update. selectedRoom:', selectedRoom);
         return;
       }
-  
+
       if (!formData) {
         console.error('Invalid formData for update. formData:', formData);
         return;
       }
-  
+
       await updateHotel(selectedRoom.id, formData);
       setUpdateModalIsOpen(false);
       setHotels(await getRooms());
@@ -110,11 +110,11 @@ function Hotels() {
       console.error('Error updating hotel:', error.message);
     }
   };
-  
-  
 
-  
-  
+
+
+
+
 
 
   const customStyles = {
@@ -125,17 +125,18 @@ function Hotels() {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      
+
     },
   };
 
   return (
     <div>
       <button onClick={() => setAddModalIsOpen(true)}>Add Hotel</button>
-     <Modal
+      <Modal
         isOpen={addModalIsOpen}
         onRequestClose={() => setAddModalIsOpen(false)}
         style={customStyles}
+
         overlayClassName="modal-overlay"
         contentLabel="Add Hotel Modal"
       >
@@ -187,8 +188,8 @@ function Hotels() {
         </form>
       </Modal>
 
-       {/* View Room Details Modal */}
-       <Modal
+      {/* View Room Details Modal */}
+      <Modal
         isOpen={viewModalIsOpen}
         onRequestClose={closeViewModal}
         style={customStyles}
@@ -206,11 +207,11 @@ function Hotels() {
           <p>Room Name: {selectedRoom?.roomName}</p>
           <p>Description: {selectedRoom?.roomDescription}</p>
           <p>Price: {selectedRoom?.roomPrice}</p>
-          
+
         </div>
       </Modal>
 
-        <Modal
+      <Modal
         isOpen={updateModalIsOpen}
         onRequestClose={() => setUpdateModalIsOpen(false)}
         style={customStyles}
@@ -224,8 +225,8 @@ function Hotels() {
           </button>
         </div>
         <form className="modal-form">
-        
-          
+
+
           <label>
             New Room Name:
             <input
@@ -253,14 +254,14 @@ function Hotels() {
             />
           </label>
 
-          
+
           <button type="button" onClick={performUpdate}>
             Update Hotel
           </button>
         </form>
       </Modal>
 
-{/* TABLE */}
+      {/* TABLE */}
 
       <table className="hotel-table">
         <thead>
@@ -281,11 +282,18 @@ function Hotels() {
               <td>{room.roomName}</td>
               <td>{room.roomDescription}</td>
               <td>{room.roomPrice}</td>
-              <td>
-                <button onClick={() => handleView(room)}>View</button>
-                <button onClick={() => handleUpdate(room.id)}>Update</button>
-                <button onClick={() => handleDelete(room.id)}>Delete</button>
+              <td className="button-container">
+                <button className="view-button" onClick={() => handleView(room)}>
+                  View
+                </button>
+                <button className="update-button" onClick={() => handleUpdate(room.id)}>
+                  Update
+                </button>
+                <button className="delete-button" onClick={() => handleDelete(room.id)}>
+                  Delete
+                </button>
               </td>
+
             </tr>
           ))}
         </tbody>

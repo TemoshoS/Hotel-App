@@ -179,10 +179,10 @@ const Book = () => {
                                 <label>Room type</label><br></br>
                                     <input
                                         type="text"
-                                        value={`${searchParams?.rooms || 0} `}
+                                        value={`${searchParams?.rooms || 0} suite`}
                                         readOnly
                                     />
-                                    <label>Number of Guests</label><br></br>
+                                    <label>Guests</label><br></br>
                                     <input
                                         type="text"
                                         value={`Adults: ${searchParams?.adults || 0}, Children: ${searchParams?.children || 0}`}

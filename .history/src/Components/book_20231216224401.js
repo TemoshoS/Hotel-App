@@ -182,7 +182,7 @@ const Book = () => {
                                         value={`${searchParams?.rooms || 0} `}
                                         readOnly
                                     />
-                                    <label>Number of Guests</label><br></br>
+                                    <label>Guests</label><br></br>
                                     <input
                                         type="text"
                                         value={`Adults: ${searchParams?.adults || 0}, Children: ${searchParams?.children || 0}`}

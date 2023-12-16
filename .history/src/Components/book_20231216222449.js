@@ -94,7 +94,7 @@ const Book = () => {
                 let message = `Payment Complete! Reference ${transaction.reference}`
                 alert(message);
                 bookRoom();
-                navigate('/homePage')
+                nav
             },
             onCancel() {
                 alert('you have canceled the transaction')

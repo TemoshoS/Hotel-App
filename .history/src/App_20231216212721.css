@@ -425,8 +425,8 @@
 
 .infoHerHeader{
   margin-top: 20px;
+  justify-content: center;
 }
-
 .input-contain label {
   font-weight: bold;
 }
@@ -441,14 +441,6 @@
   text-align: left;
 
 }
-
-.input-contain input:focus {
-  border: 1px solid #d90b0b;
-}
-.ds:focus{
-  border: 1px solid #d90b0b;
-}
-
 
 .roomPrice {
   font-size: 18px;

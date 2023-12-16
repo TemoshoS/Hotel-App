@@ -51,8 +51,8 @@ function Profile() {
     const currentUser = await AuthService.getCurrentUser();
     setUser(currentUser);
     setEditable(false);
-  }; 
- 
+  };
+
   const handleCancelBooking = (bookingId) => {
     setSelectedBookingId(bookingId);
     setShowCancelModal(true);

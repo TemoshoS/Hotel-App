@@ -51,8 +51,8 @@ function Profile() {
     const currentUser = await AuthService.getCurrentUser();
     setUser(currentUser);
     setEditable(false);
-  }; 
- 
+  };
+
   const handleCancelBooking = (bookingId) => {
     setSelectedBookingId(bookingId);
     setShowCancelModal(true);
@@ -73,7 +73,7 @@ function Profile() {
       
       setShowCancelModal(false);
       setCancelReason('');
-      setOtherReason('');
+      setOtherReason(''); // Reset the other reason input
 
       alert('Cancellation request submitted successfully!');
     } catch (error) {

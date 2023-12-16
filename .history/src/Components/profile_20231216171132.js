@@ -16,7 +16,7 @@ function Profile() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [selectedBookingId, setSelectedBookingId] = useState(null);
   const [otherReason, setOtherReason] = useState('');
-
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,18 +41,37 @@ function Profile() {
     setEditable(true);
   };
 
-  const handleSave = async () => {
-    await AuthService.updateUserInformation({
-      displayName: updatedName,
-      email: updatedEmail,
-    });
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(file);
+  };
+  
+  const handleSave = async () => {
+    if (selectedImage) {
+      
+      const imageUrl = await uploadImage(selectedImage);
+     
+      await AuthService.updateUserInformation({
+        displayName: updatedName,
+        email: updatedEmail,
+        photoURL: imageUrl,
+      });
+    } else {
+      
+      await AuthService.updateUserInformation({
+        displayName: updatedName,
+        email: updatedEmail,
+      });
+    }
+  
     // Fetch updated user data
     const currentUser = await AuthService.getCurrentUser();
     setUser(currentUser);
     setEditable(false);
-  }; 
- 
+  };
+  
+
   const handleCancelBooking = (bookingId) => {
     setSelectedBookingId(bookingId);
     setShowCancelModal(true);

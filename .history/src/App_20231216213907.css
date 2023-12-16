@@ -442,13 +442,14 @@
 
 }
 
-.input-contain input:focus {
-  border: 1px solid #d90b0b;
-}
-.ds:focus{
-  border: 1px solid #d90b0b;
-}
+.input-contain input:hover {
+ 
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  text-align: left;
 
+}
 
 .roomPrice {
   font-size: 18px;

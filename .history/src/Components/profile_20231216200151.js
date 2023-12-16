@@ -52,7 +52,7 @@ function Profile() {
     setUser(currentUser);
     setEditable(false);
   }; 
- 
+t
   const handleCancelBooking = (bookingId) => {
     setSelectedBookingId(bookingId);
     setShowCancelModal(true);

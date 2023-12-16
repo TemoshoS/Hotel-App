@@ -42,17 +42,30 @@ function Profile() {
   };
 
   const handleSave = async () => {
-    await AuthService.updateUserInformation({
-      displayName: updatedName,
-      email: updatedEmail,
-    });
-
+    if (selectedImage) {
+      
+      const imageUrl = await uploadImage(selectedImage);
+     
+      await AuthService.updateUserInformation({
+        displayName: updatedName,
+        email: updatedEmail,
+        photoURL: imageUrl,
+      });
+    } else {
+      
+      await AuthService.updateUserInformation({
+        displayName: updatedName,
+        email: updatedEmail,
+      });
+    }
+  
     // Fetch updated user data
     const currentUser = await AuthService.getCurrentUser();
     setUser(currentUser);
     setEditable(false);
-  }; 
- 
+  };
+  
+
   const handleCancelBooking = (bookingId) => {
     setSelectedBookingId(bookingId);
     setShowCancelModal(true);

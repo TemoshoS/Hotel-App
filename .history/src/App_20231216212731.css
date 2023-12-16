@@ -442,14 +442,6 @@
 
 }
 
-.input-contain input:focus {
-  border: 1px solid #d90b0b;
-}
-.ds:focus{
-  border: 1px solid #d90b0b;
-}
-
-
 .roomPrice {
   font-size: 18px;
   margin: 20px 0;

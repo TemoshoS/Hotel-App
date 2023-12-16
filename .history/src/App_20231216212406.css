@@ -423,10 +423,6 @@
   margin: 5px 0;
 }
 
-.infoHerHeader{
-  margin-top: 20px;
-}
-
 .input-contain label {
   font-weight: bold;
 }
@@ -435,20 +431,12 @@
   width: 100%;
   border-radius: 5px;
   padding: 4px;
-  margin-bottom: 10px;
+  
   box-sizing: border-box;
   border: 1px solid #ccc;
   text-align: left;
 
 }
-
-.input-contain input:focus {
-  border: 1px solid #d90b0b;
-}
-.ds:focus{
-  border: 1px solid #d90b0b;
-}
-
 
 .roomPrice {
   font-size: 18px;

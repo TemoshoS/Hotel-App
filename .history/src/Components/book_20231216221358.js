@@ -58,11 +58,6 @@ const Book = () => {
         fetchRoom();
         fetchUserData();
 
-        if (searchParams) {
-            setCheckInDate(searchParams.checkInDate || '');
-            setCheckOutDate(searchParams.checkOutDate || '');
-        }
-
 
     }, [itemId]);
 
@@ -94,7 +89,6 @@ const Book = () => {
                 let message = `Payment Complete! Reference ${transaction.reference}`
                 alert(message);
                 bookRoom();
-                navigate('/homePage')
             },
             onCancel() {
                 alert('you have canceled the transaction')
@@ -187,16 +181,16 @@ const Book = () => {
                                             <label>Check In Date</label><br></br>
                                             <input
                                                 type="date"
-                                                value={checkInDate}
-                                                onChange={(e) => setCheckInDate(e.target.value)}
+                                                value={searchParams?.checkInDate || ''}
+                                                onChange={(e) => console.log(e.target.value)} // Update with your handler
                                             /><br></br>
                                         </div>
                                         <div style={{ width: '48%' }}>
                                             <label>Check Out Date</label><br></br>
                                             <input
                                                 type="date"
-                                                value={checkOutDate}
-                                                onChange={(e) => setCheckOutDate(e.target.value)}
+                                                value={searchParams?.checkOutDate || ''}
+                                                onChange={(e) => console.log(e.target.value)} // Update with your handler
                                             /><br></br>
                                         </div>
                                     </div>

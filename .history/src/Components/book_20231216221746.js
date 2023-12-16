@@ -58,11 +58,6 @@ const Book = () => {
         fetchRoom();
         fetchUserData();
 
-        if (searchParams) {
-            setCheckInDate(searchParams.checkInDate || '');
-            setCheckOutDate(searchParams.checkOutDate || '');
-        }
-
 
     }, [itemId]);
 
@@ -94,7 +89,6 @@ const Book = () => {
                 let message = `Payment Complete! Reference ${transaction.reference}`
                 alert(message);
                 bookRoom();
-                navigate('/homePage')
             },
             onCancel() {
                 alert('you have canceled the transaction')
@@ -187,7 +181,7 @@ const Book = () => {
                                             <label>Check In Date</label><br></br>
                                             <input
                                                 type="date"
-                                                value={checkInDate}
+                                                value={searchParams?.checkInDate || checkInDate}
                                                 onChange={(e) => setCheckInDate(e.target.value)}
                                             /><br></br>
                                         </div>
@@ -195,7 +189,7 @@ const Book = () => {
                                             <label>Check Out Date</label><br></br>
                                             <input
                                                 type="date"
-                                                value={checkOutDate}
+                                                value={searchParams?.checkOutDate || checkOutDate}
                                                 onChange={(e) => setCheckOutDate(e.target.value)}
                                             /><br></br>
                                         </div>

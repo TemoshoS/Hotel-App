@@ -254,28 +254,28 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: -220px;
   background-color: white;
-  
+  color: #27ae60;
+  padding: 5px;
   box-sizing: border-box;
 }
 
 .nameService {
   font-weight: bold;
   margin-top: 10px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   
 }
 
 .descService {
-  color: #7cbb57;
+  color: #555;
   margin-top: 8px;
   /* overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; */
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: Didot, serif;
 }
 
 /* start */
-
 
 .facilities-grid {
   display: flex;

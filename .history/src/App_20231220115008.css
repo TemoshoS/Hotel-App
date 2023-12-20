@@ -261,12 +261,12 @@
 .nameService {
   font-weight: bold;
   margin-top: 10px;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   
 }
 
 .descService {
-  color: #7cbb57;
+  color: #bb5757;
   margin-top: 8px;
   /* overflow: hidden;
   text-overflow: ellipsis;
@@ -275,7 +275,6 @@
 }
 
 /* start */
-
 
 .facilities-grid {
   display: flex;

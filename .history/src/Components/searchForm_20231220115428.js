@@ -58,18 +58,11 @@ const SearchForm = ({ onSearch }) => {
         alert('Please select a valid check-out daate after the check-in date.');
         return;
     }
-
+    
     if (rooms < 1) {
       alert('Please select at least 1 room.');
       return;
     }
-
-    if (adults < 1 && children < 1) {
-      alert('Please select at least 1 adult or 1 child.');
-      return;
-    }
-    
-    
 
       onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });
     };

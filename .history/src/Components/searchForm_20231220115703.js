@@ -64,11 +64,10 @@ const SearchForm = ({ onSearch }) => {
       return;
     }
 
-    if (adults < 1 && children < 1) {
-      alert('Please select at least 1 adult or 1 child.');
+    if (adults < 1 || children < 1) {
+      alert('Please select at least 1 adult and 1 child.');
       return;
     }
-    
     
 
       onSearch({ checkInDate, checkOutDate, guests, rooms, adults, children });

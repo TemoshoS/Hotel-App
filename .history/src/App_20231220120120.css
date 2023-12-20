@@ -275,7 +275,9 @@
 }
 
 /* start */
-
+.searchCard{
+  width: 500px;
+}
 
 .facilities-grid {
   display: flex;

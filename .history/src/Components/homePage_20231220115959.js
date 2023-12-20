@@ -195,7 +195,7 @@ const HomePage = () => {
 
       </div>
 
-      <div className='searchCard'><SearchForm onSearch={handleSearch} /></div>
+      <div></div><SearchForm onSearch={handleSearch} />
 
       {showWelcome && (
        <div class='infoDisplay'>

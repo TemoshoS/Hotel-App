@@ -24,7 +24,7 @@ function SideNav() {
     const isOut = await AuthService.logout();
 
     if (isOut) {
-      alert('Admin logged out');
+      alert('S');
       navigation('/sign');
       setIsLoggedIn(false);
     } else {

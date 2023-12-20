@@ -24,7 +24,7 @@ function SideNav() {
     const isOut = await AuthService.logout();
 
     if (isOut) {
-      alert('Admin logged out');
+      alert('Success');
       navigation('/sign');
       setIsLoggedIn(false);
     } else {
@@ -41,11 +41,11 @@ function SideNav() {
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
-          
-          
-            <NavLink to="/dashboard" className="sidebar-link" activeClassName="active">
+          <NavLink to="/dashboard" className="sidebar-link" activeClassName="active">
             <FaChartBar /> Dashboard
-            </NavLink>
+          </NavLink>
+          {isLoggedIn && (
+            <>
               <NavLink to="/hotels" className="sidebar-link" activeClassName="active">
                 <FaMoneyBill /> Hotels
               </NavLink>
@@ -55,10 +55,11 @@ function SideNav() {
               <NavLink to="/sign" className="sidebar-link" activeClassName="active" onClick={signOut}>
                 <FaSignOutAlt /> Logout
               </NavLink>
-           
+            </>
+          )}
         </CDBSidebarContent>
 
-        <CDBSidebarFooter className="sidebar-footer">2023 @copyright</CDBSidebarFooter>
+        <CDBSidebarFooter className="sidebar-footer"></CDBSidebarFooter>
       </CDBSidebar>
     </div>
   );

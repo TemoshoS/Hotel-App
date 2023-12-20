@@ -134,7 +134,7 @@ function Hotels() {
 
   return (
     <div style={{padding:'50px'}}>
-      <button onClick={() => setAddModalIsOpen(true)} className='addBtn'>Add Hotel</button>
+      <button onClick={() => setAddModalIsOpen(true)} className=''>Add Hotel</button>
       <Modal
         isOpen={addModalIsOpen}
         onRequestClose={() => setAddModalIsOpen(false)}

@@ -1,3 +1,4 @@
+// SideNav.js
 import React from 'react';
 import { CDBSidebar, CDBSidebarContent, CDBSidebarFooter, CDBSidebarHeader } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
@@ -18,17 +19,17 @@ import {useNavigate } from 'react-router-dom';
 
 function SideNav() {
   const navigation = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = React.useState(AuthService.getCurrentUser());
+  const [isLoggedIn, setIsLoggedIn] = React.useState(AuthService.isLoggedIn());
 
   const signOut = async () => {
     const isOut = await AuthService.logout();
 
     if (isOut) {
-      alert('Admin logged out');
+      alert('Success');
       navigation('/sign');
       setIsLoggedIn(false);
     } else {
-      
+      // Handle logout failure if needed
     }
   };
   return (
@@ -41,24 +42,23 @@ function SideNav() {
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
-          
-          
-            <NavLink to="/dashboard" className="sidebar-link" activeClassName="active">
+          <NavLink to="/dashboard" className="sidebar-link" activeClassName="active">
             <FaChartBar /> Dashboard
-            </NavLink>
-              <NavLink to="/hotels" className="sidebar-link" activeClassName="active">
-                <FaMoneyBill /> Hotels
-              </NavLink>
-              <NavLink to="/adminService" className="sidebar-link" activeClassName="active">
-                <FaMoneyBill /> Services
-              </NavLink>
-              <NavLink to="/sign" className="sidebar-link" activeClassName="active" onClick={signOut}>
-                <FaSignOutAlt /> Logout
-              </NavLink>
-           
+          </NavLink>
+          <NavLink to="/hotels" className="sidebar-link" activeClassName="active">
+            <FaMoneyBill /> Hotels
+          </NavLink>
+          <NavLink to="/adminService" className="sidebar-link" activeClassName="active">
+            <FaMoneyBill /> Services
+          </NavLink>
+          <NavLink to="/sign" className="sidebar-link" activeClassName="active">
+            <FaSignOutAlt /> Logout
+          </NavLink>
         </CDBSidebarContent>
 
-        <CDBSidebarFooter className="sidebar-footer">2023 @copyright</CDBSidebarFooter>
+        <CDBSidebarFooter className="sidebar-footer">
+         
+        </CDBSidebarFooter>
       </CDBSidebar>
     </div>
   );

@@ -255,11 +255,9 @@ const customStyles = {
               <td>{service.serviceName}</td>
               <td>{service.serviceDesc}</td>
               <td>
-                <div style={{display:'flex'}}>
                 <button onClick={() => handleDelete(service.id)} className='deleteBtn'>Delete</button>
                 <button onClick={()=>handleView(service)} className='viewBtn'>View</button>
                 <button onClick={()=>handleUpdate(service.id)} className='updateBtn'>Update</button>
-                </div>
               </td>
             </tr>
           ))}

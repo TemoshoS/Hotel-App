@@ -125,7 +125,7 @@ const customStyles = {
 
   return (
     <div style={{padding:'50px'}}>
-        <button onClick={() => setAddModalIsOpen(true)} className='addBtn'>Add Service</button>
+        <button onClick={() => setAddModalIsOpen(true)}>Add Service</button>
       <Modal
         isOpen={addModalIsOpen}
         onRequestClose={() => setAddModalIsOpen(false)}
@@ -254,12 +254,10 @@ const customStyles = {
               <td><img src={service.serviceImage} alt='image' className='aimgService' /></td>
               <td>{service.serviceName}</td>
               <td>{service.serviceDesc}</td>
-              <td>
-                <div style={{display:'flex'}}>
-                <button onClick={() => handleDelete(service.id)} className='deleteBtn'>Delete</button>
-                <button onClick={()=>handleView(service)} className='viewBtn'>View</button>
-                <button onClick={()=>handleUpdate(service.id)} className='updateBtn'>Update</button>
-                </div>
+              <td style={{flexDirection:'c'}}>
+                <button onClick={() => handleDelete(service.id)} >Delete</button>
+                <button onClick={()=>handleView(service)}>View</button>
+                <button onClick={()=>handleUpdate(service.id)}>Update</button>
               </td>
             </tr>
           ))}

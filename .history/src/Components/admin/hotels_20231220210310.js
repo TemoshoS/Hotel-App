@@ -133,8 +133,8 @@ function Hotels() {
   };
 
   return (
-    <div style={{padding:'50px'}}>
-      <button onClick={() => setAddModalIsOpen(true)} className='addBtn'>Add Hotel</button>
+    <div>
+      <button onClick={() => setAddModalIsOpen(true)}>Add Hotel</button>
       <Modal
         isOpen={addModalIsOpen}
         onRequestClose={() => setAddModalIsOpen(false)}
@@ -296,7 +296,6 @@ function Hotels() {
                 <button className="delete-button" onClick={() => handleDelete(room.id)}>
                   Delete
                 </button>
-                </div>
               </td>
 
             </tr>

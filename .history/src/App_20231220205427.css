@@ -259,10 +259,10 @@
 }
 
 .addBtn{
-  background-color: #ccc;
+  background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 5px 20px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -273,10 +273,10 @@
 
 }
 .deleteBtn{
-  background-color: #e63829;
+  background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -290,7 +290,7 @@
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -301,10 +301,10 @@
 
 }
 .updateBtn{
-  background-color: #4ca3af;
+  background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

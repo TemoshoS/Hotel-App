@@ -26,7 +26,7 @@ const HomePage = () => {
     fetchCurrentUser();
 
     fetchRoomsData();
-
+   
     fetchServicesData();
 
   }, []);
@@ -45,10 +45,10 @@ const HomePage = () => {
     try {
       const currentUser = await AuthService.getCurrentUser();
       if (currentUser) {
-
+        
         console.log(currentUser);
       } else {
-
+        
         console.log('No user logged in');
       }
     } catch (error) {
@@ -121,7 +121,7 @@ const HomePage = () => {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
-    height: '60vh',
+    height: '70vh',
     width: '100%'
   };
 
@@ -188,8 +188,8 @@ const HomePage = () => {
                   <h4>{slideImage.welcomeText.h4}</h4>
 
                   {slideImage.welcomeText.boldText.map((text, i) => (
-                    <SlideShowText key={i} text={text} />
-                  ))}
+  <SlideShowText key={i} text={text} />
+))}
 
                 </div>
               </div>
@@ -202,19 +202,19 @@ const HomePage = () => {
       <div className='searchCard'><SearchForm onSearch={handleSearch} /></div>
 
       {showWelcome && (
-        <div class='infoDisplay'>
-
-          {services.map((service) => (
-            <div key={service.id} class='services'>
-              <img src={service.serviceImage} alt='image' class='imgService' />
-              <div className='serviceInfo'>
-                <p class='nameService'>{service.serviceName}</p>
-                <p class='descService'>{service.serviceDesc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
+       <div class='infoDisplay'>
+        
+       {services.map((service) => (  
+         <div key={service.id} class='services'>
+           <img src={service.serviceImage} alt='image' class='imgService'/>
+           <div className='serviceInfo'>
+           <p class='nameService'>{service.serviceName}</p>
+           <p class='descService'>{service.serviceDesc}</p>
+         </div>
+         </div>
+       ))}
+     </div>
+     
       )}
 
       {showFacilitiesGrid && (

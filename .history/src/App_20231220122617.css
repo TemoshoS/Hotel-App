@@ -138,7 +138,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  
+  margin-top: -29px;
 }
 
 .spanStyle {
@@ -151,10 +151,9 @@
 
 }
 .bold-text {
-  font-family: Calligraffitti;
-  font-size: 18px; 
+  font-weight: bold;
+  font-size: 18px; /* Adjust the font size as needed */
   margin-bottom: 10px;
-  color: white;
 }
 
 

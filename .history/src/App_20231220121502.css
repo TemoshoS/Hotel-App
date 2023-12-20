@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+
+
+
 .fa-eye:before {
   content: '\f06e';
 }
@@ -82,6 +85,10 @@
 
 
 
+
+
+
+
 /* Navigation */
 .topnav {
   overflow: hidden;
@@ -138,8 +145,10 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  
+  margin-top: -29px;
 }
+
+
 
 .spanStyle {
 
@@ -150,13 +159,6 @@
   font-size: 20px;
 
 }
-.bold-text {
-  font-family: Calligraffitti;
-  font-size: 18px; 
-  margin-bottom: 10px;
-  color: white;
-}
-
 
 .hotel-image {
   width: 100%;

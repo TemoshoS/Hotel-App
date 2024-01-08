@@ -3,6 +3,8 @@ import authimage from '../images/hotels.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import {getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import AuthService from '../services/authService'; 
+import LoadingModal from './loadingModal';
 
 const Signup = ({ onClose }) => {
   const [email, setEmail] = useState('');
@@ -14,6 +16,7 @@ const Signup = ({ onClose }) => {
   const [error, setError] = useState(null);
   const [passwordStrength, setPasswordStrength] = useState('');
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleRegister = async () => {
     const auth = getAuth();
@@ -33,15 +36,12 @@ const Signup = ({ onClose }) => {
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-      await updateProfile(userCredential.user, {
-        displayName: name,
-        phoneNumber: phone,
-      });
+      setLoading(true); 
+      await AuthService.register(email, password, name, phone);
+      setLoading(false); 
 
       alert('user registerd succesfully');
-      navigate('/sign')
+      navigate('/')
 
    
     } catch (error) {
@@ -90,6 +90,7 @@ const Signup = ({ onClose }) => {
       <div className='auth' >
         <p className="heading">Sign up</p>
         
+        <LoadingModal isOpen={loading} />
 
         <div className="input-container">
         <div className="input-field-container">

@@ -1,4 +1,3 @@
-// App.js
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import SideNav from './Components/sideNav'; 

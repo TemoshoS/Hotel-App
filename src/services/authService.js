@@ -4,15 +4,20 @@ import { auth } from '../config/firebase';
 import {getRegisteredUsers} from './roomServices';
 
 const AuthService = {
-  register: async (email, password) => {
+  register: async (email, password, name, phone) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      return { user };
+  
+      await updateProfile(userCredential.user, {
+        displayName: name,
+        phoneNumber: phone,
+      });
+      return { userCredential };
     } catch (error) {
       return { error };
     }
   },
+  
 
   login: async (email, password) => {
     try {

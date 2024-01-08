@@ -32,13 +32,13 @@ function Bookings() {
   const getStatusBackgroundColor = (status) => {
     switch (status) {
       case 'Active':
-        return 'lightgreen'; // Set your desired background color for active bookings
+        return 'lightgreen'; 
       case 'Past':
-        return 'lightcoral'; // Set your desired background color for past bookings
+        return 'lightcoral'; 
       case 'Canceled':
-        return 'lightgray'; // Set your desired background color for canceled bookings
+        return 'lightgray'; 
       default:
-        return 'white'; // Default background color
+        return 'white'; 
     }
   };
 

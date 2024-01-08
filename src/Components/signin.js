@@ -4,7 +4,7 @@ import AuthService from '../services/authService';
 import authimage from '../images/hotels.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
+import LoadingModal from './loadingModal';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +14,7 @@ const Signin = () => {
   const [passError, setPassError] = useState(null);
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -21,7 +22,11 @@ const Signin = () => {
       return;
     }
 
+    setLoading(true); 
+
     const { user, error } = await AuthService.login(email, password);
+
+    setLoading(false); 
 
     if (user) {
       setUserError(null);
@@ -37,8 +42,6 @@ const Signin = () => {
       }
     }
   };
-
- 
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -58,16 +61,14 @@ const Signin = () => {
     >
       <div className="auth">
         <p className="heading">Login</p>
-
+        <LoadingModal isOpen={loading} />
         <div className="input-container">
-          
           <div className="input-field-container">
             <input placeholder='Email' type="text" onChange={(event) => setEmail(event.target.value)} />
           </div>
         </div>
 
         <div className="input-container">
-          
           <div className="input-field-container">
             <input placeholder='Password' onChange={(e) => setPassword(e.target.value)} type={showPassword ? 'text' : 'password'} />
             <FontAwesomeIcon
@@ -77,14 +78,16 @@ const Signin = () => {
             />
           </div>
         </div>
-        <button className="submit-button" onClick={handleLogin}>
-          Login
+        
+        <button className="submit-button" onClick={handleLogin} disabled={loading}>
+        Login
         </button>
+
         <div className="input-container" style={{display: 'flex', justifyContent:'space-between', marginTop:'20px'}}>
-        <p >
-          Don't have an account? <Link to="/register" style={{ color: 'red', textDecoration: 'none' }}>Sign up</Link>
-        </p>
-          <label >
+          <p>
+            Don't have an account? <Link to="/register" style={{ color: 'red', textDecoration: 'none' }}>Sign up</Link>
+          </p>
+          <label>
             <Link
               to="/forgotpassword"
               style={{ color: 'blue'}}
@@ -93,10 +96,6 @@ const Signin = () => {
             </Link>
           </label>
         </div>
-
-        
-
-        
       </div>
     </div>
   );

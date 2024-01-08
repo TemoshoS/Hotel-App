@@ -97,7 +97,9 @@
 .topnav {
   overflow: hidden;
   background-color: #fff;
-  
+  align-items: center;
+  display: flex; 
+  height: 80px; 
 }
 
 .topnav a {
@@ -110,10 +112,13 @@
   font-size: 17px;
 }
 
-/* .topnav a:hover {
-  background-color: #ddd;
-  color: black;
-} */
+.logo{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .topnav a.active {
   color: white;
@@ -124,12 +129,13 @@
 }
 
 .topnav .right-links {
-  float: right;
+  margin-left: auto;
 }
 
 .topnav .right-links a {
   display: inline-block;
   color: black;
+  font-weight: bold;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -138,8 +144,8 @@
 }
 
 .topnav .right-links a:hover {
-  background-color: #ddd;
-  color: black;
+  
+  color:#ccc;
 }
 
 
@@ -610,8 +616,7 @@
 }
 
 .logOutBtn{
-  background-color: #ccc;
-  color: #fff;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -1014,8 +1019,37 @@
   transform: scale(1.2);
   box-shadow: 0 0 20px rgba(65, 89, 90, 0.2);
 }
+.loading-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.loading-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
 
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #000;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 /* Styles for smaller screens */
 @media screen and (max-width: 768px) {
   .topnav a:not(:first-child) {

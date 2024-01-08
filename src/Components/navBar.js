@@ -39,7 +39,7 @@ function Navigation() {
         <div>
           <a href="/homePage" className="active" onClick={closeMenu}>
           
-              <img src={logo} alt="Logo" style={{width:'100px', height:'50px',borderRadius:'50px'}}/>
+              <img src={logo} alt="Logo" className='logo'/>
             
           </a>
         </div>
@@ -54,10 +54,10 @@ function Navigation() {
           <>
            
               <a href="/profile" onClick={closeMenu}>
-                <FontAwesomeIcon icon={faUser}/>
+               Profile {/* <FontAwesomeIcon icon={faUser}/> */}
               </a>
-              <a href="/profile" onClick={closeMenu}>
-              <button className='logOutBtn' onClick={handleLogout}>Logout</button>
+              <a href="/" onClick={closeMenu}>
+              <button className='logOutBtn' onClick={handleLogout}><i class="fa fa-sign-out" aria-hidden="true"></i></button>
               </a>
           </>
         ) : (
